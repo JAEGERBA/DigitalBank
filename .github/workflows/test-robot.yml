@@ -104,75 +104,64 @@
 
 
 
-# ##############      V2       ##############
+##############      V2       ##############
 
-# # Nom du workflow dans l’onglet GitHub Actions
-# name: Robot Tests
+# Nom du workflow dans l’onglet GitHub Actions
+name: Robot Tests
 
-# # Déclenche le workflow sur :
-# # - pull_request : à chaque PR
-# # - push : à chaque push (toutes branches)
-# # - workflow_dispatch : lancement manuel
-# on: [pull_request, push, workflow_dispatch]
-
-# jobs:
-#   # Un seul job "robot" pour tout faire (simple)
-#   robot:
-#     # Runner Linux fourni par GitHub
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       # 1) Récupère le contenu du dépôt (tests, requirements.txt, index.html, etc.)
-#       - uses: actions/checkout@v4
-
-#       # 2) Installe Python (Robot Framework tourne sur Python)
-#       - uses: actions/setup-python@v5
-#         with:
-#           python-version: "3.11"
-
-#       # 3) Installe les dépendances du projet (Robot + SeleniumLibrary + Selenium…)
-#       # (version simplifiée : pas de upgrade pip / pas de cache)
-#       - run: pip install -r requirements.txt
-
-#       # 4) Démarre un petit serveur HTTP pour servir l’app (index.html) sur localhost:8080
-#       # Le "&" met la commande en arrière-plan pour que le workflow puisse continuer
-#       - run: python -m http.server 8080 --directory . &
-
-#       # 5) Exécute Robot Framework
-#       # - On choisit un TAG selon l'événement :
-#       #     PR    -> smoke
-#       #     push  -> regression
-#       #     sinon -> nightly (par défaut)
-#       # - -d results : dossier de sortie (rapports Robot)
-#       # - -i $TAG : exécute uniquement les tests portant ce tag
-#       # - -v BASE_URL:... : passe l’URL de l’app aux tests (utilisable via ${BASE_URL})
-#       # - -v HEADLESS:true : indique aux tests de lancer Chrome en mode headless (CI)
-#       # - "tests" : dossier contenant vos fichiers .robot
-#       - name: Run tests
-#         run: |
-#           TAG=nightly
-#           if [ "${{ github.event_name }}" = "pull_request" ]; then TAG=smoke; fi
-#           if [ "${{ github.event_name }}" = "push" ]; then TAG=regression; fi
-#           robot -d results -i $TAG -v BASE_URL:http://localhost:8080 -v HEADLESS:true tests
-
-#       # 6) Upload le dossier results dans les artefacts GitHub Actions
-#       # always() => upload même si les tests échouent (utile pour consulter report/log)
-#       - uses: actions/upload-artifact@v4
-#         if: always()
-#         with:
-#           name: results
-#           path: results
-
-
-
-
-
-name: CI
-
-on: [workflow_dispatch]
+# Déclenche le workflow sur :
+# - pull_request : à chaque PR
+# - push : à chaque push (toutes branches)
+# - workflow_dispatch : lancement manuel
+on: [pull_request, push, workflow_dispatch]
 
 jobs:
-  hello:
+  # Un seul job "robot" pour tout faire (simple)
+  robot:
+    # Runner Linux fourni par GitHub
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "hello"
+      # 1) Récupère le contenu du dépôt (tests, requirements.txt, index.html, etc.)
+      - uses: actions/checkout@v4
+
+      # 2) Installe Python (Robot Framework tourne sur Python)
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 3) Installe les dépendances du projet (Robot + SeleniumLibrary + Selenium…)
+      # (version simplifiée : pas de upgrade pip / pas de cache)
+      - run: pip install -r requirements.txt
+
+      # 4) Démarre un petit serveur HTTP pour servir l’app (index.html) sur localhost:8080
+      # Le "&" met la commande en arrière-plan pour que le workflow puisse continuer
+      - run: python -m http.server 8080 --directory . &
+
+      # 5) Exécute Robot Framework
+      # - On choisit un TAG selon l'événement :
+      #     PR    -> smoke
+      #     push  -> regression
+      #     sinon -> nightly (par défaut)
+      # - -d results : dossier de sortie (rapports Robot)
+      # - -i $TAG : exécute uniquement les tests portant ce tag
+      # - -v BASE_URL:... : passe l’URL de l’app aux tests (utilisable via ${BASE_URL})
+      # - -v HEADLESS:true : indique aux tests de lancer Chrome en mode headless (CI)
+      # - "tests" : dossier contenant vos fichiers .robot
+      - name: Run tests
+        run: |
+          TAG=nightly
+          if [ "${{ github.event_name }}" = "pull_request" ]; then TAG=smoke; fi
+          if [ "${{ github.event_name }}" = "push" ]; then TAG=regression; fi
+          robot -d results -i $TAG -v BASE_URL:http://localhost:8080 -v HEADLESS:true tests
+
+      # 6) Upload le dossier results dans les artefacts GitHub Actions
+      # always() => upload même si les tests échouent (utile pour consulter report/log)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: results
+          path: results
+
+
+
