@@ -1,0 +1,4 @@
+robotframework==7.*
+robotframework-seleniumlibrary==6.*
+selenium==4.*
+PyYAML==6.*
