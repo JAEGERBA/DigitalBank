@@ -1,0 +1,178 @@
+# # Nom affiché dans l’onglet GitHub Actions
+# name: Robot Tests
+
+# # Déclencheurs du workflow :
+# on:
+#   # À chaque Pull Request : on veut une suite rapide (smoke)
+#   pull_request:
+
+#   # À chaque push sur la branche main : on lance la régression
+#   push:
+#     branches: [ main ]
+
+#   # Exécution planifiée (nightly) : tous les jours à 02:00 UTC
+#   # (UTC ≠ heure France : c’est généralement +1 en hiver / +2 en été)
+#   schedule:
+#     - cron: "0 2 * * *"
+
+#   # Permet de lancer le workflow à la main depuis l’interface GitHub
+#   workflow_dispatch:
+
+# # Variables d’environnement disponibles dans toutes les étapes
+# env:
+#   # URL de l’application testée
+#   # Ici on sert l’app en local via un serveur HTTP (voir step "Start app")
+#   BASE_URL: "http://localhost:8080"
+
+#   # Dossier de sortie Robot : contiendra report.html, log.html, output.xml…
+#   OUTDIR: "results"
+
+# jobs:
+#   # Un seul job pour simplifier : il choisit la suite à exécuter selon l’événement (PR/push/schedule)
+#   robot:
+#     # Runner GitHub (machine virtuelle Linux)
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # 1) Récupère le code du dépôt (indispensable pour accéder aux tests + requirements.txt)
+#       - uses: actions/checkout@v4
+
+#       # 2) Installe Python (Robot Framework tourne en Python)
+#       - uses: actions/setup-python@v5
+#         with:
+#           python-version: "3.11"
+
+#       # 3) Installe les dépendances Python (Robot + libs) puis initialise Browser (Playwright)
+#       # - pip install -r requirements.txt : installe robotframework, robotframework-browser, etc.
+#       # - Browser.entry init : télécharge/installe les navigateurs Playwright nécessaires
+#       - name: Install deps
+#         run: |
+#           python -m pip install --upgrade pip
+#           pip install -r requirements.txt
+#           python -m Browser.entry init
+
+#       # 4) Démarre l’application à tester
+#       # Ici on sert le dépôt comme un site statique sur http://localhost:8080
+#       # (adaptable si vous démarrez l’app via npm, docker-compose, etc.)
+#       - name: Start app
+#         run: python -m http.server 8080 --directory .
+
+#       # 5) Choisit automatiquement la "suite" à exécuter en fonction du trigger :
+#       # - PR => tag Robot "smoke"
+#       # - push sur main => "regression"
+#       # - schedule/workflow_dispatch => "nightly"
+#       #
+#       # Le résultat est stocké dans l’output de l’étape (steps.suite.outputs.tag)
+#       - name: Choose suite
+#         id: suite
+#         run: |
+#           if [ "${{ github.event_name }}" = "pull_request" ]; then
+#             echo "tag=smoke" >> $GITHUB_OUTPUT
+#           elif [ "${{ github.event_name }}" = "push" ]; then
+#             echo "tag=regression" >> $GITHUB_OUTPUT
+#           else
+#             echo "tag=nightly" >> $GITHUB_OUTPUT
+#           fi
+
+#       # 6) Lance Robot Framework :
+#       # --outputdir : où écrire les rapports
+#       # --include : n’exécute que les tests taggés (smoke/regression/nightly)
+#       # --variable BASE_URL : injecte l’URL dans les tests (ex : ${BASE_URL} côté Robot)
+#       # "tests" : dossier racine des suites Robot
+#       - name: Run Robot
+#         run: |
+#           mkdir -p $OUTDIR
+#           robot --outputdir $OUTDIR \
+#                 --include ${{ steps.suite.outputs.tag }} \
+#                 --variable BASE_URL:${{ env.BASE_URL }} \
+#                 tests
+
+#       # 7) Publie les résultats en artefact téléchargeable dans GitHub Actions,
+#       # même si les tests échouent (if: always()).
+#       # Le nom de l’artefact inclut le tag exécuté pour s’y retrouver.
+#       - name: Upload report
+#         if: always()
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: robot-results-${{ steps.suite.outputs.tag }}
+#           path: results
+
+
+
+
+
+
+
+
+# ##############      V2       ##############
+
+# # Nom du workflow dans l’onglet GitHub Actions
+# name: Robot Tests
+
+# # Déclenche le workflow sur :
+# # - pull_request : à chaque PR
+# # - push : à chaque push (toutes branches)
+# # - workflow_dispatch : lancement manuel
+# on: [pull_request, push, workflow_dispatch]
+
+# jobs:
+#   # Un seul job "robot" pour tout faire (simple)
+#   robot:
+#     # Runner Linux fourni par GitHub
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # 1) Récupère le contenu du dépôt (tests, requirements.txt, index.html, etc.)
+#       - uses: actions/checkout@v4
+
+#       # 2) Installe Python (Robot Framework tourne sur Python)
+#       - uses: actions/setup-python@v5
+#         with:
+#           python-version: "3.11"
+
+#       # 3) Installe les dépendances du projet (Robot + SeleniumLibrary + Selenium…)
+#       # (version simplifiée : pas de upgrade pip / pas de cache)
+#       - run: pip install -r requirements.txt
+
+#       # 4) Démarre un petit serveur HTTP pour servir l’app (index.html) sur localhost:8080
+#       # Le "&" met la commande en arrière-plan pour que le workflow puisse continuer
+#       - run: python -m http.server 8080 --directory . &
+
+#       # 5) Exécute Robot Framework
+#       # - On choisit un TAG selon l'événement :
+#       #     PR    -> smoke
+#       #     push  -> regression
+#       #     sinon -> nightly (par défaut)
+#       # - -d results : dossier de sortie (rapports Robot)
+#       # - -i $TAG : exécute uniquement les tests portant ce tag
+#       # - -v BASE_URL:... : passe l’URL de l’app aux tests (utilisable via ${BASE_URL})
+#       # - -v HEADLESS:true : indique aux tests de lancer Chrome en mode headless (CI)
+#       # - "tests" : dossier contenant vos fichiers .robot
+#       - name: Run tests
+#         run: |
+#           TAG=nightly
+#           if [ "${{ github.event_name }}" = "pull_request" ]; then TAG=smoke; fi
+#           if [ "${{ github.event_name }}" = "push" ]; then TAG=regression; fi
+#           robot -d results -i $TAG -v BASE_URL:http://localhost:8080 -v HEADLESS:true tests
+
+#       # 6) Upload le dossier results dans les artefacts GitHub Actions
+#       # always() => upload même si les tests échouent (utile pour consulter report/log)
+#       - uses: actions/upload-artifact@v4
+#         if: always()
+#         with:
+#           name: results
+#           path: results
+
+
+
+
+
+name: CI
+
+on: [workflow_dispatch]
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello"
