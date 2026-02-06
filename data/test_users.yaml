@@ -1,0 +1,17 @@
+users:
+  standard:
+    email: "test@digitalbank.fr"
+    password: "Test1234!"
+    two_fa_enabled: false
+
+  twofa:
+    email: "marie.martin@email.com"
+    password: "SecurePass456!"
+    two_fa_enabled: true
+    two_fa_code: "123456"
+
+test_data:
+  wrong_password: "WrongPass123!"
+  wrong_two_fa_code: "000000"
+  strong_password: "TempPass789!"
+  weak_password: "1234"
