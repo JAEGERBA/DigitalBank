@@ -2,6 +2,7 @@
 Library    SeleniumLibrary
 Library    String
 Resource   ../variables.resource
+Resource   ../locators.resource
 
 
 *** Variables ***
