@@ -1,11 +1,10 @@
 *** Settings ***
-Library    OperatingSystem
 Library    Collections
+Resource    testdata.py
 
 *** Keywords ***
 Load Test Data
-    ${content}=    Get File    data/test_users.yaml
-    ${data}=       Evaluate    yaml.safe_load(r"""${content}""")    modules=yaml
+    ${data}=    Load Test Data From Yaml    data/test_users.yaml
     Set Suite Variable    ${TESTDATA}    ${data}
 
 Get Standard Credentials
