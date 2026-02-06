@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Smoke tests DigitalBank : validation rapide des parcours critiques (PR).
 Resource          ../resources/keywords/auth.resource
+Resource          ../resources/keywords/testdata.resource
 
 # On ouvre/ferme le navigateur une seule fois pour aller vite et rester stable
 Suite Setup       Open App

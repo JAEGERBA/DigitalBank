@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation     Nightly tests DigitalBank : scénarios élargis + négatifs (sans casser les données).
 Resource          ../resources/keywords/auth.resource
+Resource  ../resources/keywords/testdata.resource
 
 Suite Setup       Open App
 Suite Teardown    Close App

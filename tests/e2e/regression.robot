@@ -2,6 +2,7 @@
 *** Settings ***
 Documentation     Regression tests DigitalBank : non-régression sur authentification et sécurité.
 Resource          ../resources/keywords/auth.resource
+Resource          ../resources/keywords/testdata.resource
 
 # On ouvre/ferme le navigateur une seule fois pour la suite (plus rapide et stable)
 Suite Setup       Open App

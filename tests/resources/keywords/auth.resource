@@ -1,8 +1,10 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    String
-Resource   ../variables.resource
-Resource   ../locators.resource
+Resource       ../variables.resource
+Resource       ../locators.resource
+Resource      testdata.resource
+
 
 
 *** Variables ***
@@ -51,6 +53,8 @@ ${BTN_CANCEL_PASSWORD}     css=[data-testid="btn-cancel-password"]
 
 Open App
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
+    
+    Load Test Data
 
     Run Keyword If    '${HEADLESS}'=='true'    Call Method    ${options}    add_argument    argument=--headless
     Call Method    ${options}    add_argument    argument=--no-sandbox
@@ -102,8 +106,9 @@ Login With Credentials
     Click Button          ${LOGIN_SUBMIT}
 
 Login As Standard User
-    [Documentation]    Login avec le compte standard (sans 2FA).
-    Login With Credentials    ${USER_STD_EMAIL}    ${USER_STD_PASSWORD}
+    [Documentation]    Login avec le compte standard (sans 2FA) depuis le YAML.
+    ${email}    ${password}=    Get Standard Credentials
+    Login With Credentials      ${email}    ${password}
     Wait Until Main App Is Visible
 
 Login As 2FA User
