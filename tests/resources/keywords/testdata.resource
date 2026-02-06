@@ -1,7 +1,6 @@
 *** Settings ***
 Library    Collections
-Resource    testdata.py
-
+Library    testdata.py
 *** Keywords ***
 Load Test Data
     ${data}=    Load Test Data From Yaml    data/test_users.yaml
