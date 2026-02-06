@@ -4,6 +4,8 @@ Resource          ../resources/keywords/auth.resource
 
 Suite Setup       Open App
 Suite Teardown    Close App
+
+Test Setup    Go To Login Page
 Force Tags        nightly
 
 
@@ -50,3 +52,11 @@ Change password modal rejects weak password (no save)
     # On annule pour ne rien changer (test sans effet de bord)
     Click Button      ${BTN_CANCEL_PASSWORD}
     Logout
+
+*** Keywords ***
+Go To Login Page
+    Go To    ${BASE_URL}
+    # Si on est connecté, on se déconnecte
+    Run Keyword And Ignore Error    Logout
+    Go To    ${BASE_URL}
+    Wait Until Login Page Is Visible
