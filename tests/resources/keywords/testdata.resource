@@ -5,7 +5,7 @@ Library    Collections
 *** Keywords ***
 Load Test Data
     ${content}=    Get File    data/test_users.yaml
-    ${data}=       Evaluate    __import__("yaml").safe_load(content)    content=${content}
+    ${data}=       Evaluate    yaml.safe_load(r"""${content}""")    modules=yaml
     Set Suite Variable    ${TESTDATA}    ${data}
 
 Get Standard Credentials
