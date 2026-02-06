@@ -50,12 +50,12 @@ ${BTN_CANCEL_PASSWORD}     css=[data-testid="btn-cancel-password"]
 # =============================================================================
 
 Open App
-    [Documentation]    Ouvre Chrome (headless si demandé), configure la session et va sur ${BASE_URL}.
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
-    # Headless en CI (HEADLESS=true passé par GitHub Actions)
-    Run Keyword If    '${HEADLESS}'=='true'    Call Method    ${options}    add_argument    --headless\=new    Call Method    ${options}    add_argument    --no-sandbox
-    Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    Call Method    ${options}    add_argument    --window-size=1920,1080
+
+    Run Keyword If    '${HEADLESS}'=='true'    Call Method    ${options}    add_argument    argument=--headless
+    Call Method    ${options}    add_argument    argument=--no-sandbox
+    Call Method    ${options}    add_argument    argument=--disable-dev-shm-usage
+    Call Method    ${options}    add_argument    argument=--window-size=1920,1080
 
     Create Webdriver    Chrome    options=${options}
     Set Selenium Timeout    ${TIMEOUT}
