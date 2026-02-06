@@ -53,8 +53,7 @@ Open App
     [Documentation]    Ouvre Chrome (headless si demandé), configure la session et va sur ${BASE_URL}.
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
     # Headless en CI (HEADLESS=true passé par GitHub Actions)
-    Run Keyword If    '${HEADLESS}'=='true'    Call Method    ${options}    add_argument    --headless=new
-    Call Method    ${options}    add_argument    --no-sandbox
+    Run Keyword If    '${HEADLESS}'=='true'    Call Method    ${options}    add_argument    --headless\=new    Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Call Method    ${options}    add_argument    --window-size=1920,1080
 
