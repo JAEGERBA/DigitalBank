@@ -1,6 +1,12 @@
 *** Settings ***
 Library    Collections
 Library    testdata.py
+
+
+*** Variables ***
+${TESTDATA}
+
+
 *** Keywords ***
 Load Test Data
     ${data}=    Load Test Data From Yaml    data/test_users.yaml

@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.10.12 on linux)" generated="2026-03-02T11:20:23.390751" rpa="false" schemaversion="5">
+<suite id="s1" name="Nightly" source="/home/jules-rousseau/Bureau/DigitalBank/tests/e2e/nightly.robot">
+<kw name="Ouvrir L'Application" owner="auth" type="SETUP">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-03-02T11:20:23.827509" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7aabf758a800&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-03-02T11:20:23.826649" elapsed="0.000934"/>
+</kw>
+<kw name="Load Test Data" owner="testdata">
+<kw name="Load Test Data From Yaml" owner="testdata">
+<msg time="2026-03-02T11:20:23.831981" level="INFO">${data} = {'users': {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': ...</msg>
+<var>${data}</var>
+<arg>data/test_users.yaml</arg>
+<status status="PASS" start="2026-03-02T11:20:23.828214" elapsed="0.003881"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-03-02T11:20:23.836863" level="INFO">${TESTDATA} = {'users': {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': ...</msg>
+<arg>${TESTDATA}</arg>
+<arg>${data}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-03-02T11:20:23.832528" elapsed="0.004521"/>
+</kw>
+<status status="PASS" start="2026-03-02T11:20:23.827884" elapsed="0.009394"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${HEADLESS}'=='true'</arg>
+<arg>Call Method</arg>
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>argument=--headless</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2026-03-02T11:20:23.837688" elapsed="0.000972"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>argument=--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-03-02T11:20:23.839039" elapsed="0.000805"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>argument=--disable-dev-shm-usage</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-03-02T11:20:23.840178" elapsed="0.000786"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>argument=--window-size=1920,1080</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2026-03-02T11:20:23.841354" elapsed="0.001178"/>
+</kw>
+<kw name="Create Webdriver" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:23.843609" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<arg>Chrome</arg>
+<arg>options=${options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<status status="PASS" start="2026-03-02T11:20:23.842963" elapsed="1.591868"/>
+</kw>
+<kw name="Set Selenium Timeout" owner="SeleniumLibrary">
+<arg>${TIMEOUT}</arg>
+<doc>Sets the timeout that is used by various keywords.</doc>
+<status status="PASS" start="2026-03-02T11:20:25.435413" elapsed="0.002964"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:25.443102" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-03-02T11:20:25.440419" elapsed="0.481571"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:25.923440" elapsed="0.080269"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:26.004162" elapsed="0.070458"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:20:25.922837" elapsed="0.152005"/>
+</kw>
+<status status="PASS" start="2026-03-02T11:20:23.824600" elapsed="2.250394"/>
+</kw>
+<test id="s1-t1" name="Standard login then logout (nightly sanity)" line="20">
+<kw name="Go To Login Page" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:26.077580" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-03-02T11:20:26.077140" elapsed="0.080720"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Logout" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:36.508816" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-02T11:20:36.509104" level="FAIL">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</msg>
+<arg>${BTN_LOGOUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2026-03-02T11:20:26.159745" elapsed="10.350410">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</status>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>${BTN_LOGOUT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-03-02T11:20:36.510759" elapsed="0.000172"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="NOT RUN" start="2026-03-02T11:20:36.511507" elapsed="0.000166"/>
+</kw>
+<doc>Déconnexion et retour à la page login.</doc>
+<status status="FAIL" start="2026-03-02T11:20:26.159086" elapsed="10.353518">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</status>
+</kw>
+<arg>Logout</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-03-02T11:20:26.158258" elapsed="10.354774"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:36.514320" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.513596" elapsed="0.053079"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.567829" elapsed="0.039932"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.608227" elapsed="0.028516"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:20:36.567190" elapsed="0.069780"/>
+</kw>
+<status status="PASS" start="2026-03-02T11:20:26.076506" elapsed="10.560615"/>
+</kw>
+<kw name="Login En Tant Qu'Utilisateur Standard" owner="auth">
+<kw name="Get Standard Credentials" owner="testdata">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-03-02T11:20:36.640062" level="INFO">${users} = {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': True, 'two...</msg>
+<var>${users}</var>
+<arg>${TESTDATA}</arg>
+<arg>users</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.639143" elapsed="0.001615"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-03-02T11:20:36.642208" level="INFO">${standard} = {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}</msg>
+<var>${standard}</var>
+<arg>${users}</arg>
+<arg>standard</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.641524" elapsed="0.000756"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-03-02T11:20:36.643339" level="INFO">${email} = test@digitalbank.fr</msg>
+<var>${email}</var>
+<arg>${standard}</arg>
+<arg>email</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.642774" elapsed="0.000640"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-03-02T11:20:36.644139" level="INFO">${password} = Test1234!</msg>
+<var>${password}</var>
+<arg>${standard}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.643736" elapsed="0.000461"/>
+</kw>
+<return>
+<value>${email}</value>
+<value>${password}</value>
+<status status="PASS" start="2026-03-02T11:20:36.644403" elapsed="0.000143"/>
+</return>
+<msg time="2026-03-02T11:20:36.644917" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-02T11:20:36.644996" level="INFO">${password} = Test1234!</msg>
+<var>${email}</var>
+<var>${password}</var>
+<status status="PASS" start="2026-03-02T11:20:36.638606" elapsed="0.006431"/>
+</kw>
+<kw name="Login Avec Identifiants" owner="auth">
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.648669" elapsed="0.047928"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.697007" elapsed="0.036705"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:20:36.646989" elapsed="0.087773"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.735440" elapsed="0.084784"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:36.821328" level="INFO">Typing text 'test@digitalbank.fr' into text field 'css=[data-testid="input-email"]'.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.820713" elapsed="0.132706"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.953930" elapsed="0.072400"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:37.027458" level="INFO">Typing password into text field 'css=[data-testid="input-password"]'.</msg>
+<msg time="2026-03-02T11:20:37.101732" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.026790" elapsed="0.200304"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:37.227869" level="INFO">Clicking button 'css=[data-testid="btn-login"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.227453" elapsed="0.237119"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Saisit les identifiants et soumet le formulaire de login.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.645639" elapsed="0.819269"/>
+</kw>
+<kw name="Wait Until Main App Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TAB_DASHBOARD}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.466119" elapsed="0.035324"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_LOGOUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.501908" elapsed="0.029512"/>
+</kw>
+<doc>Vérifie que l'utilisateur est connecté (onglets + bouton déconnexion).</doc>
+<status status="PASS" start="2026-03-02T11:20:37.465356" elapsed="0.066332"/>
+</kw>
+<doc>Login avec le compte standard (sans 2FA) depuis le YAML.</doc>
+<status status="PASS" start="2026-03-02T11:20:36.637768" elapsed="0.894073"/>
+</kw>
+<kw name="Logout" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_LOGOUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.533009" elapsed="0.022918"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:37.556806" level="INFO">Clicking button 'css=[data-testid="btn-logout"]'.</msg>
+<arg>${BTN_LOGOUT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.556306" elapsed="0.131643"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.689013" elapsed="0.032700"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.722123" elapsed="0.020035"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:20:37.688453" elapsed="0.053923"/>
+</kw>
+<doc>Déconnexion et retour à la page login.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.532333" elapsed="0.210196"/>
+</kw>
+<doc>Sanity nightly : login standard -&gt; app visible -&gt; logout.</doc>
+<tag>nightly</tag>
+<status status="PASS" start="2026-03-02T11:20:26.075153" elapsed="11.667705"/>
+</test>
+<test id="s1-t2" name="Invalid login shows an error" line="25">
+<kw name="Go To Login Page" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:37.745752" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.745439" elapsed="0.053939"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Logout" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:47.975850" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-02T11:20:47.976088" level="FAIL">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</msg>
+<arg>${BTN_LOGOUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2026-03-02T11:20:37.802384" elapsed="10.174037">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</status>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>${BTN_LOGOUT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-03-02T11:20:47.976719" elapsed="0.000055"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="NOT RUN" start="2026-03-02T11:20:47.977010" elapsed="0.000047"/>
+</kw>
+<doc>Déconnexion et retour à la page login.</doc>
+<status status="FAIL" start="2026-03-02T11:20:37.801526" elapsed="10.175722">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</status>
+</kw>
+<arg>Logout</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-03-02T11:20:37.799928" elapsed="10.177430"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:47.977833" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-03-02T11:20:47.977556" elapsed="0.051176"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.029958" elapsed="0.047361"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.077763" elapsed="0.026557"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:20:48.029177" elapsed="0.075415"/>
+</kw>
+<status status="PASS" start="2026-03-02T11:20:37.744888" elapsed="10.359877"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.106018" elapsed="0.028406"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.134870" elapsed="0.027620"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:20:48.105297" elapsed="0.057489"/>
+</kw>
+<kw name="Login Avec Identifiants" owner="auth">
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.167079" elapsed="0.041351"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.208936" elapsed="0.024306"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:20:48.166191" elapsed="0.067261"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.233762" elapsed="0.044816"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:48.279460" level="INFO">Typing text 'test@digitalbank.fr' into text field 'css=[data-testid="input-email"]'.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.278931" elapsed="0.136897"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.416765" elapsed="0.090812"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:48.508789" level="INFO">Typing password into text field 'css=[data-testid="input-password"]'.</msg>
+<msg time="2026-03-02T11:20:48.588383" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.508081" elapsed="0.181215"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:48.690550" level="INFO">Clicking button 'css=[data-testid="btn-login"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.689990" elapsed="0.173901"/>
+</kw>
+<arg>${USER_STD_EMAIL}</arg>
+<arg>${WRONG_PASSWORD}</arg>
+<doc>Saisit les identifiants et soumet le formulaire de login.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.164560" elapsed="0.699599"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_ERROR}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.865890" elapsed="0.043068"/>
+</kw>
+<doc>Vérifie qu’un mot de passe invalide déclenche un message d’erreur.</doc>
+<tag>nightly</tag>
+<status status="PASS" start="2026-03-02T11:20:37.743486" elapsed="11.166401"/>
+</test>
+<test id="s1-t3" name="2FA wrong code shows an error" line="31">
+<kw name="Go To Login Page" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:48.913355" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.913075" elapsed="0.077933"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Logout" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:59.265815" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-02T11:20:59.266089" level="FAIL">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</msg>
+<arg>${BTN_LOGOUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2026-03-02T11:20:48.993973" elapsed="10.272390">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</status>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>${BTN_LOGOUT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-03-02T11:20:59.266766" elapsed="0.000080"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="NOT RUN" start="2026-03-02T11:20:59.267199" elapsed="0.000100"/>
+</kw>
+<doc>Déconnexion et retour à la page login.</doc>
+<status status="FAIL" start="2026-03-02T11:20:48.992990" elapsed="10.274537">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</status>
+</kw>
+<arg>Logout</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-03-02T11:20:48.991461" elapsed="10.276227"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:59.268402" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.268042" elapsed="0.059297"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.329926" elapsed="0.056616"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.386843" elapsed="0.031142"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:20:59.328096" elapsed="0.090194"/>
+</kw>
+<status status="PASS" start="2026-03-02T11:20:48.912583" elapsed="10.505974"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.421316" elapsed="0.038806"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.460955" elapsed="0.042022"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:20:59.419339" elapsed="0.083960"/>
+</kw>
+<kw name="Login Avec Identifiants" owner="auth">
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.505376" elapsed="0.045152"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.551677" elapsed="0.028812"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:20:59.504902" elapsed="0.076050"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.581406" elapsed="0.045292"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:59.627828" level="INFO">Typing text 'marie.martin@email.com' into text field 'css=[data-testid="input-email"]'.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.627086" elapsed="0.132301"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.759852" elapsed="0.079919"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:20:59.840846" level="INFO">Typing password into text field 'css=[data-testid="input-password"]'.</msg>
+<msg time="2026-03-02T11:20:59.937387" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.840216" elapsed="0.182056"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:00.023958" level="INFO">Clicking button 'css=[data-testid="btn-login"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.023143" elapsed="0.150615"/>
+</kw>
+<arg>${USER_2FA_EMAIL}</arg>
+<arg>${USER_2FA_PASSWORD}</arg>
+<doc>Saisit les identifiants et soumet le formulaire de login.</doc>
+<status status="PASS" start="2026-03-02T11:20:59.503955" elapsed="0.670097"/>
+</kw>
+<kw name="Wait Until 2FA Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${2FA_CODE_0}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.176510" elapsed="0.034714"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${2FA_VERIFY}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.211665" elapsed="0.026685"/>
+</kw>
+<doc>Vérifie que l'écran 2FA est affiché (6 inputs + bouton Vérifier).</doc>
+<status status="PASS" start="2026-03-02T11:21:00.174922" elapsed="0.063656"/>
+</kw>
+<kw name="Saisir Le Code 2FA" owner="auth">
+<kw name="Get Substring" owner="String">
+<msg time="2026-03-02T11:21:00.240529" level="INFO">${c0} = 0</msg>
+<var>${c0}</var>
+<arg>${code}</arg>
+<arg>0</arg>
+<arg>1</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.239970" elapsed="0.000631"/>
+</kw>
+<kw name="Get Substring" owner="String">
+<msg time="2026-03-02T11:21:00.241771" level="INFO">${c1} = 0</msg>
+<var>${c1}</var>
+<arg>${code}</arg>
+<arg>1</arg>
+<arg>2</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.241061" elapsed="0.000819"/>
+</kw>
+<kw name="Get Substring" owner="String">
+<msg time="2026-03-02T11:21:00.243459" level="INFO">${c2} = 0</msg>
+<var>${c2}</var>
+<arg>${code}</arg>
+<arg>2</arg>
+<arg>3</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.242422" elapsed="0.001150"/>
+</kw>
+<kw name="Get Substring" owner="String">
+<msg time="2026-03-02T11:21:00.245279" level="INFO">${c3} = 0</msg>
+<var>${c3}</var>
+<arg>${code}</arg>
+<arg>3</arg>
+<arg>4</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.244358" elapsed="0.001022"/>
+</kw>
+<kw name="Get Substring" owner="String">
+<msg time="2026-03-02T11:21:00.247680" level="INFO">${c4} = 0</msg>
+<var>${c4}</var>
+<arg>${code}</arg>
+<arg>4</arg>
+<arg>5</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.246818" elapsed="0.000946"/>
+</kw>
+<kw name="Get Substring" owner="String">
+<msg time="2026-03-02T11:21:00.248760" level="INFO">${c5} = 0</msg>
+<var>${c5}</var>
+<arg>${code}</arg>
+<arg>5</arg>
+<arg>6</arg>
+<doc>Returns a substring from ``start`` index to ``end`` index.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.248126" elapsed="0.000706"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:00.249740" level="INFO">Typing text '0' into text field 'css=[data-testid="2fa-code-0"]'.</msg>
+<arg>${2FA_CODE_0}</arg>
+<arg>${c0}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.249184" elapsed="0.108971"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:00.359286" level="INFO">Typing text '0' into text field 'css=[data-testid="2fa-code-1"]'.</msg>
+<arg>${2FA_CODE_1}</arg>
+<arg>${c1}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.358602" elapsed="0.093761"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:00.454240" level="INFO">Typing text '0' into text field 'css=[data-testid="2fa-code-2"]'.</msg>
+<arg>${2FA_CODE_2}</arg>
+<arg>${c2}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.453446" elapsed="0.133148"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:00.587758" level="INFO">Typing text '0' into text field 'css=[data-testid="2fa-code-3"]'.</msg>
+<arg>${2FA_CODE_3}</arg>
+<arg>${c3}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.587023" elapsed="0.087344"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:00.675759" level="INFO">Typing text '0' into text field 'css=[data-testid="2fa-code-4"]'.</msg>
+<arg>${2FA_CODE_4}</arg>
+<arg>${c4}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.674874" elapsed="0.084421"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:00.760659" level="INFO">Typing text '0' into text field 'css=[data-testid="2fa-code-5"]'.</msg>
+<arg>${2FA_CODE_5}</arg>
+<arg>${c5}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.759801" elapsed="0.088518"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:00.849418" level="INFO">Clicking button 'css=[data-testid="btn-verify-2fa"]'.</msg>
+<arg>${2FA_VERIFY}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.848746" elapsed="0.122541"/>
+</kw>
+<arg>${WRONG_2FA_CODE}</arg>
+<doc>Renseigne les 6 chiffres du code 2FA puis clique sur Vérifier.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.239242" elapsed="0.732446"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${2FA_ERROR}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:00.972171" elapsed="0.034683"/>
+</kw>
+<doc>Vérifie qu’un mauvais code 2FA affiche un message d’erreur.</doc>
+<tag>nightly</tag>
+<status status="PASS" start="2026-03-02T11:20:48.910886" elapsed="12.097175"/>
+</test>
+<test id="s1-t4" name="Changer De Mot De Passe modal rejects weak password (no save)" line="39">
+<kw name="Go To Login Page" type="SETUP">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:01.012190" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-03-02T11:21:01.011791" elapsed="0.057715"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Logout" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:11.329131" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-8.png"&gt;&lt;img src="selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-03-02T11:21:11.329388" level="FAIL">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</msg>
+<arg>${BTN_LOGOUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2026-03-02T11:21:01.072085" elapsed="10.257568">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</status>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<arg>${BTN_LOGOUT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="NOT RUN" start="2026-03-02T11:21:11.330042" elapsed="0.000078"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="NOT RUN" start="2026-03-02T11:21:11.330505" elapsed="0.000080"/>
+</kw>
+<doc>Déconnexion et retour à la page login.</doc>
+<status status="FAIL" start="2026-03-02T11:21:01.071098" elapsed="10.259706">Element 'css=[data-testid="btn-logout"]' not visible after 10 seconds.</status>
+</kw>
+<arg>Logout</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-03-02T11:21:01.069903" elapsed="10.261060"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:11.331595" level="INFO">Opening url 'http://localhost:8080'</msg>
+<arg>${BASE_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.331227" elapsed="0.051440"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.384116" elapsed="0.041740"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.426272" elapsed="0.028562"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:21:11.383183" elapsed="0.071911"/>
+</kw>
+<status status="PASS" start="2026-03-02T11:21:01.011037" elapsed="10.444208"/>
+</kw>
+<kw name="Login En Tant Qu'Utilisateur Standard" owner="auth">
+<kw name="Get Standard Credentials" owner="testdata">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-03-02T11:21:11.458783" level="INFO">${users} = {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': True, 'two...</msg>
+<var>${users}</var>
+<arg>${TESTDATA}</arg>
+<arg>users</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.457940" elapsed="0.000930"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-03-02T11:21:11.459625" level="INFO">${standard} = {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}</msg>
+<var>${standard}</var>
+<arg>${users}</arg>
+<arg>standard</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.459245" elapsed="0.000429"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-03-02T11:21:11.460247" level="INFO">${email} = test@digitalbank.fr</msg>
+<var>${email}</var>
+<arg>${standard}</arg>
+<arg>email</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.459906" elapsed="0.000391"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-03-02T11:21:11.460984" level="INFO">${password} = Test1234!</msg>
+<var>${password}</var>
+<arg>${standard}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.460563" elapsed="0.000542"/>
+</kw>
+<return>
+<value>${email}</value>
+<value>${password}</value>
+<status status="PASS" start="2026-03-02T11:21:11.461363" elapsed="0.000904"/>
+</return>
+<msg time="2026-03-02T11:21:11.462928" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-02T11:21:11.463115" level="INFO">${password} = Test1234!</msg>
+<var>${email}</var>
+<var>${password}</var>
+<status status="PASS" start="2026-03-02T11:21:11.456772" elapsed="0.006423"/>
+</kw>
+<kw name="Login Avec Identifiants" owner="auth">
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.466317" elapsed="0.038294"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.505047" elapsed="0.019683"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:21:11.465526" elapsed="0.059417"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.525296" elapsed="0.044340"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:11.570592" level="INFO">Typing text 'test@digitalbank.fr' into text field 'css=[data-testid="input-email"]'.</msg>
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.570019" elapsed="0.121234"/>
+</kw>
+<kw name="Clear Element Text" owner="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD}</arg>
+<doc>Clears the value of the text-input-element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.691689" elapsed="0.069851"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:11.763170" level="INFO">Typing password into text field 'css=[data-testid="input-password"]'.</msg>
+<msg time="2026-03-02T11:21:11.833501" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${LOGIN_PASSWORD}</arg>
+<arg>${password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.762342" elapsed="0.197094"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:11.961241" level="INFO">Clicking button 'css=[data-testid="btn-login"]'.</msg>
+<arg>${LOGIN_SUBMIT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.960147" elapsed="0.199952"/>
+</kw>
+<arg>${email}</arg>
+<arg>${password}</arg>
+<doc>Saisit les identifiants et soumet le formulaire de login.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.463957" elapsed="0.696450"/>
+</kw>
+<kw name="Wait Until Main App Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TAB_DASHBOARD}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.162028" elapsed="0.028903"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_LOGOUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.191677" elapsed="0.024014"/>
+</kw>
+<doc>Vérifie que l'utilisateur est connecté (onglets + bouton déconnexion).</doc>
+<status status="PASS" start="2026-03-02T11:21:12.161043" elapsed="0.054940"/>
+</kw>
+<doc>Login avec le compte standard (sans 2FA) depuis le YAML.</doc>
+<status status="PASS" start="2026-03-02T11:21:11.455791" elapsed="0.760362"/>
+</kw>
+<kw name="Ouvrir La Modale de Changement De Mot De Passe" owner="auth">
+<kw name="Ouvrir L'Onglet Sécurité" owner="auth">
+<kw name="Wait Until Main App Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${TAB_DASHBOARD}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.220374" elapsed="0.019856"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_LOGOUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.240765" elapsed="0.019941"/>
+</kw>
+<doc>Vérifie que l'utilisateur est connecté (onglets + bouton déconnexion).</doc>
+<status status="PASS" start="2026-03-02T11:21:12.219465" elapsed="0.041486"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:12.261974" level="INFO">Clicking element 'css=[data-testid="tab-security"]'.</msg>
+<arg>${TAB_SECURITY}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.261377" elapsed="0.101609"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_CHANGE_PASSWORD}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.363377" elapsed="0.035072"/>
+</kw>
+<doc>Ouvre l'onglet Sécurité.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.217734" elapsed="0.180996"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:12.399703" level="INFO">Clicking button 'css=[data-testid="btn-change-password"]'.</msg>
+<arg>${BTN_CHANGE_PASSWORD}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.399041" elapsed="0.137031"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${INPUT_CURRENT_PWD}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.536671" elapsed="0.038027"/>
+</kw>
+<doc>Ouvre la modal "Modifier le mot de passe".</doc>
+<status status="PASS" start="2026-03-02T11:21:12.216751" elapsed="0.358166"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:12.575948" level="INFO">Typing password into text field 'css=[data-testid="input-current-password"]'.</msg>
+<msg time="2026-03-02T11:21:12.623294" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_CURRENT_PWD}</arg>
+<arg>${USER_STD_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.575338" elapsed="0.132368"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:12.708958" level="INFO">Typing password into text field 'css=[data-testid="input-new-password"]'.</msg>
+<msg time="2026-03-02T11:21:12.805265" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_NEW_PWD}</arg>
+<arg>${WEAK_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.708225" elapsed="0.245106"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:12.959219" level="INFO">Typing password into text field 'css=[data-testid="input-confirm-password"]'.</msg>
+<msg time="2026-03-02T11:21:13.045349" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>${INPUT_CONFIRM_PWD}</arg>
+<arg>${WEAK_PASSWORD}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:12.955976" elapsed="0.190801"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:13.149616" level="INFO">Clicking button 'css=[data-testid="btn-save-password"]'.</msg>
+<arg>${BTN_SAVE_PASSWORD}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:13.148286" elapsed="0.172053"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${PWD_ERROR}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:13.320847" elapsed="0.040270"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:13.364159" level="INFO">Clicking button 'css=[data-testid="btn-cancel-password"]'.</msg>
+<arg>${BTN_CANCEL_PASSWORD}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:13.363262" elapsed="0.180409"/>
+</kw>
+<kw name="Logout" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${BTN_LOGOUT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:13.546311" elapsed="0.038838"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-03-02T11:21:13.586508" level="INFO">Clicking button 'css=[data-testid="btn-logout"]'.</msg>
+<arg>${BTN_LOGOUT}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-03-02T11:21:13.585825" elapsed="0.109395"/>
+</kw>
+<kw name="Wait Until Login Page Is Visible" owner="auth">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_EMAIL}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:13.697521" elapsed="0.026307"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LOGIN_SUBMIT}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-03-02T11:21:13.724217" elapsed="0.019752"/>
+</kw>
+<doc>Vérifie que l'écran de login est affiché (champ email + bouton).</doc>
+<status status="PASS" start="2026-03-02T11:21:13.696080" elapsed="0.048158"/>
+</kw>
+<doc>Déconnexion et retour à la page login.</doc>
+<status status="PASS" start="2026-03-02T11:21:13.544904" elapsed="0.199494"/>
+</kw>
+<doc>Vérifie la validation du formulaire de changement de mot de passe (sans modifier le mot de passe).</doc>
+<tag>nightly</tag>
+<status status="PASS" start="2026-03-02T11:21:01.009295" elapsed="12.735695"/>
+</test>
+<kw name="Fermer L'Application" owner="auth" type="TEARDOWN">
+<kw name="Close All Browsers" owner="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2026-03-02T11:21:13.747521" elapsed="0.096941"/>
+</kw>
+<doc>Ferme proprement le navigateur.</doc>
+<status status="PASS" start="2026-03-02T11:21:13.747009" elapsed="0.098117"/>
+</kw>
+<doc>Nightly tests DigitalBank : scénarios élargis + négatifs (sans casser les données).</doc>
+<status status="PASS" start="2026-03-02T11:20:23.393599" elapsed="50.451738"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="0" skip="0">nightly</stat>
+</tag>
+<suite>
+<stat name="Nightly" id="s1" pass="4" fail="0" skip="0">Nightly</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
