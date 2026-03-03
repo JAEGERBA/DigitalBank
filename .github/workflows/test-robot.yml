@@ -1,10 +1,16 @@
 name: Robot Tests
-on: [pull_request, push, workflow_dispatch]
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
 
 jobs:
   robot:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -15,13 +21,10 @@ jobs:
 
       - name: Run tests
         run: |
-          echo "event_name=${{ github.event_name }}"
           TEST_DIR=tests/e2e
-          TAG=nightly
-
-          if [ "${{ github.event_name }}" = "pull_request" ]; then TAG=smoke; fi
-          if [ "${{ github.event_name }}" = "push" ]; then TAG=regression; fi
-
+          TAG=regression
+          [ "${{ github.event_name }}" = "pull_request" ] && TAG=smoke
+          [ "${{ github.event_name }}" = "schedule" ] && TAG=nightly
           robot -d results -v BASE_URL:http://localhost:8080 -v HEADLESS:true -i "$TAG" "$TEST_DIR"
 
       - uses: actions/upload-artifact@v4

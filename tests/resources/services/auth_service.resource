@@ -1,8 +1,8 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    String
+
 Resource       ../variables.resource
-# Resource       ../locators.resource
 Resource       testdata.resource
 Resource       ../POM/login_page.resource
 Resource       ../POM/main_page.resource
@@ -94,15 +94,14 @@ Changer De Mot De Passe
     security_page.Saisir Mot De Passe Actuel    ${current_password}
     security_page.Saisir Nouveau Mot De Passe   ${new_password}
     security_page.Confirmer Le Mot De Passe     ${new_password}
+    security_page.Le Mot De Passe Est Modifié
 
 Saisir Un Mot De Passe Faible
     [Documentation]    Saisir un mot de passe trop faible
     [Arguments]    ${weak_password}
 
-    socle.Saisir Le Mot De Passe    ${INPUT_CURRENT_PWD}    ${USER_STD_PASSWORD}
-    socle.Saisir Le Mot De Passe    ${INPUT_NEW_PWD}        ${weak_password}
-    socle.Saisir Le Mot De Passe    ${INPUT_CONFIRM_PWD}    ${weak_password}
-
-    socle.Cliquer Sur Le Bouton    ${BTN_SAVE_PASSWORD}
-    socle.Attendre Que L'Element Soit Visible    ${PWD_ERROR}   ${TIMEOUT}
-    socle.Cliquer Sur Le Bouton    ${CANCEL_PASSWORD_BUTTON}
+    security_page.Saisir Mot De Passe Actuel     ${USER_STD_PASSWORD}
+    security_page.Saisir Nouveau Mot De Passe    ${weak_password}
+    security_page.Confirmer Le Mot De Passe      ${weak_password}
+    security_page.Le Message D'Erreur Est Présent
+    security_page.Annuler Le Mot De Passe
