@@ -66,12 +66,7 @@ L'Element Ne Doit Pas Etre Visible
     [Arguments]    ${locator}
 
     SeleniumLibrary.Element Should Not Be Visible    ${locator}
-
-Selectionner Depuis Liste Par Label
-    [Arguments]    ${SOURCE_SELECT}    ${compte}
-
-    SeleniumLibrary.Select From List By Label    ${SOURCE_SELECT}    ${compte}
-
+    
 Selectionner Depuis Liste Par Valeur
     [Arguments]    ${SOURCE_SELECT}    ${compte}
 

@@ -37,7 +37,7 @@ Selectionner Compte Source Dans La Liste
     [Arguments]    ${compte}
 
     socle.Attendre Que L'Element Soit Visible    ${SOURCE_SELECT}    ${TIMEOUT}
-    socle.Selectionner Depuis Liste Par Label    ${SOURCE_SELECT}    ${compte}
+    socle.Selectionner Depuis Liste Par Valeur    ${SOURCE_SELECT}    ${compte}
 
 Selectionner Compte Destinataire Dans La Liste
     [Documentation]    Sélectionne le compte de destination dans la liste des 
@@ -45,7 +45,7 @@ Selectionner Compte Destinataire Dans La Liste
     [Arguments]    ${compte}
 
     socle.Attendre Que L'Element Soit Visible    ${DEST_SELECT}    ${TIMEOUT}
-    socle.Selectionner Depuis Liste Par Label    ${DEST_SELECT}    ${compte}
+    socle.Selectionner Depuis Liste Par Valeur    ${DEST_SELECT}    ${compte}
 
 Saisir Montant Dans Le Champ
     [Documentation]    Saisie du montant dans le champ prévu
