@@ -43,7 +43,7 @@ ${TAB_SECURITY}                css=[data-testid="tab-security"]
 ${LOGOUT_BUTTON}               css=[data-testid="btn-logout"]
 
 # -----------------------------------------------------------------------------
-# Security / Change password (Settings/Security)
+# Security / Changer De Mot De Passe (Settings/Security)
 # -----------------------------------------------------------------------------
 ${CHANGE_PASSWORD_BUTTON}      css=[data-testid="btn-change-password"]
 ${CHANGE_PWD_MODAL}            css=[data-testid="modal-change-password"]

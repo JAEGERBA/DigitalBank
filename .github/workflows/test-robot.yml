@@ -55,8 +55,6 @@
 #           name: results
 #           path: results
 
-
-
 ########## nouvelle version ###################
 
 # Nom du workflow dans l’onglet GitHub Actions
@@ -116,10 +114,13 @@ jobs:
       #     robot --nostatusrc -d results -i $TAG -v BASE_URL:http://localhost:8080 -v HEADLESS:true tests
       - name: Run tests
         run: |
-          FILE=tests/e2e/nightly.robot
-          if [ "${{ github.event_name }}" = "pull_request" ]; then FILE=tests/e2e/smoke.robot; fi
-          if [ "${{ github.event_name }}" = "push" ]; then FILE=tests/e2e/regression.robot; fi
-          robot --nostatusrc -d results -v BASE_URL:http://localhost:8080 -v HEADLESS:true $FILE
+          TEST_DIR=tests/e2e
+          TAG=nightly
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then TAG=smoke; fi
+          if [ "${{ github.event_name }}" = "push" ]; then TAG=regression; fi
+
+          robot --nostatusrc -d results -v BASE_URL:http://localhost:8080 -v HEADLESS:true -i "$TAG" "$TEST_DIR"
 
       # 6) Upload le dossier results dans les artefacts GitHub Actions
       # always() => upload même si les tests échouent (utile pour consulter report/log)
