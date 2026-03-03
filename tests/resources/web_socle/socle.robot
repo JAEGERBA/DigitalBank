@@ -30,6 +30,14 @@ Saisir Le Texte
     SeleniumLibrary.Wait Until Element Is Visible    ${locator}    ${TIMEOUT}
     SeleniumLibrary.Input Password    ${locator}    ${text}
 
+Obtenir Le Texte
+    [Documentation]    Obtenir le texte de l'element
+    [Arguments]    ${locator}
+
+    ${text}=    SeleniumLibrary.Get Text    ${locator}
+    RETURN    ${text}
+
+
 Saisir Le Mot De Passe
     [Arguments]    ${locator}    ${pswd}
 
