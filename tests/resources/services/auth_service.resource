@@ -105,3 +105,4 @@ Saisir Un Mot De Passe Faible
 
     socle.Cliquer Sur Le Bouton    ${BTN_SAVE_PASSWORD}
     socle.Attendre Que L'Element Soit Visible    ${PWD_ERROR}   ${TIMEOUT}
+    socle.Cliquer Sur Le Bouton    ${CANCEL_PASSWORD_BUTTON}
