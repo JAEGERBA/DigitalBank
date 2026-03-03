@@ -29,7 +29,7 @@ La page de Factures est accessible
     Logout
 
 La liste des Factures en attente est visible    
-    [Tags]    smoke    regressionfactures
+    [Tags]    smoke    regression    factures
     [Documentation]    Vérifie que la liste des factures en attente est visible (anti-régression UI).
     ...                On ne fait pas d'hypothèse forte sur le nombre, juste que la zone existe.
     operations_service.Se rendre sur la page factures
