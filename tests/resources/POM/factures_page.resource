@@ -61,8 +61,11 @@ Le message de succès doit être visible
     L'Element Doit Etre Visible    ${message_succes_paiement_locator}
 
 La facture payée doit être visible
-    [Documentation]    Vérifie qu'une facture payée apparaît dans la liste des factures payées.
     [Arguments]    ${bill_id}
     ${paid_bill}=    Set Variable    //*[@data-testid='bill-paid-${bill_id}']
+
+    Attendre Que L'Element Soit Visible    ${liste_factures_payees_locator}    ${TIMEOUT}
+    Attendre Que L'Element Soit Visible    ${paid_bill}    ${TIMEOUT}
+
     L'Element Doit Etre Visible    ${liste_factures_payees_locator}
     L'Element Doit Etre Visible    ${paid_bill}

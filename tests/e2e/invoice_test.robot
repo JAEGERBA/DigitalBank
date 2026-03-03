@@ -69,19 +69,3 @@ Confirmer paiement affiche succès et déplace la facture
     factures_page.Le message de succès doit être visible
     factures_page.La facture payée doit être visible    1
     Logout
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
