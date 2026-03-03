@@ -46,6 +46,7 @@ Ouverture modale paiement facture
     factures_page.La Page Factures doit être visible
     factures_page.Cliquer sur Payer pour la facture    1
     factures_page.La modale de confirmation doit être visible
+    factures_page.fermer la modale de paiement
     Logout
 
 Annuler paiement ferme la modale

@@ -13,6 +13,7 @@ ${bouton_annuler_paiement_locator}         //*[@data-testid='btn-cancel-payment'
 ${bouton_confirmer_paiement_locator}       //*[@data-testid='btn-confirm-payment']
 ${message_succes_paiement_locator}         //*[@data-testid='bill-success']
 ${liste_factures_payees_locator}           //*[@data-testid='paid-bills']
+${bouton_fermer_modale_locator}           //*[@data-testid='btn-cancel-payment']
 
 *** Keywords ***
 
@@ -69,3 +70,10 @@ La facture payée doit être visible
 
     L'Element Doit Etre Visible    ${liste_factures_payees_locator}
     L'Element Doit Etre Visible    ${paid_bill}
+
+fermer la modale de paiement
+    [Documentation]    Ferme la modale de paiement (en cas de besoin, ex: après succès)
+
+    L'Element Doit Etre Visible    ${bouton_fermer_modale_locator}
+    Cliquer Sur L'Element          ${bouton_fermer_modale_locator}
+
