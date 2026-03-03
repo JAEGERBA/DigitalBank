@@ -53,7 +53,7 @@ ${NEW_PASSWORD_INPUT}          css=[data-testid="input-new-password"]
 ${CONFIRM_PASSWORD_INPUT}      css=[data-testid="input-confirm-password"]
 
 ${SAVE_PASSWORD_BUTTON}        css=[data-testid="btn-save-password"]
-${CANCEL_PASSWORD_BUTTON}      css=[data-testid="btn-cancel-password"]
+
 
 ${PASSWORD_ERROR}              css=[data-testid="password-error"]
 

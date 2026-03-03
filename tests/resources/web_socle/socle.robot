@@ -28,7 +28,7 @@ Saisir Le Texte
 
     SeleniumLibrary.Clear Element Text    ${locator}
     SeleniumLibrary.Wait Until Element Is Visible    ${locator}    ${TIMEOUT}
-    SeleniumLibrary.Input Password    ${locator}    ${text}
+    SeleniumLibrary.Input Text    ${locator}    ${text}
 
 Obtenir Le Texte
     [Documentation]    Obtenir le texte de l'element
@@ -36,7 +36,6 @@ Obtenir Le Texte
 
     ${text}=    SeleniumLibrary.Get Text    ${locator}
     RETURN    ${text}
-
 
 Saisir Le Mot De Passe
     [Arguments]    ${locator}    ${pswd}
@@ -57,10 +56,26 @@ Cliquer Sur L'Element
     SeleniumLibrary.Wait Until Element Is Visible    ${locator}    ${TIMEOUT}
     SeleniumLibrary.Click Element    ${locator}
 
+Scroller En Haut De La Page
+    [Documentation]    Scroller en haut de la page
+
+    SeleniumLibrary.Press Keys    None    HOME
+    Sleep    1s
+
 L'Element Ne Doit Pas Etre Visible
     [Arguments]    ${locator}
 
     SeleniumLibrary.Element Should Not Be Visible    ${locator}
+
+Selectionner Depuis Liste Par Label
+    [Arguments]    ${SOURCE_SELECT}    ${compte}
+
+    SeleniumLibrary.Select From List By Label    ${SOURCE_SELECT}    ${compte}
+
+Selectionner Depuis Liste Par Valeur
+    [Arguments]    ${SOURCE_SELECT}    ${compte}
+
+    SeleniumLibrary.Select From List By Value    ${SOURCE_SELECT}    ${compte}
 
 Aller Vers L'URL
     [Arguments]    ${URL}
