@@ -49,7 +49,7 @@ Login Invalid Avec Affichage De L'Erreur
 
 Mauvais Code Pour 2FA Affiche Une Erreur
     [Documentation]     Vérifie qu’un mauvais code 2FA affiche un message d’erreur
-    [Tags]    nightly
+    [Tags]    nightly    smoke
     
     auth_service.Login Avec Identifiants    ${USER_2FA_EMAIL}    ${USER_2FA_PASSWORD}
     2FA_page.La Page "2FA" Est Visible
@@ -58,7 +58,7 @@ Mauvais Code Pour 2FA Affiche Une Erreur
 
 Changer De Mot De Passe - Mot De Passe Trop Faible
     [Documentation]     Vérifie la validation du formulaire de changement de mot de passe (sans modifier le mot de passe)
-    [Tags]    nightly
+    [Tags]    nightly   smoke
     
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}
