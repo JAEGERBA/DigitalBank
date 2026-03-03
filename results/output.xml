@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.1 (Python 3.10.12 on linux)" generated="2026-03-03T16:14:36.317672" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.1 (Python 3.10.12 on linux)" generated="2026-03-03T16:20:52.349314" rpa="false" schemaversion="5">
 <suite id="s1" name="E2E" source="/home/jules-rousseau/Bureau/DigitalBank/tests/e2e">
 <suite id="s1-s1" name="Virements tests" source="/home/jules-rousseau/Bureau/DigitalBank/tests/e2e/Virements_tests.robot">
 <kw name="Ouvrir L'Application" owner="auth_service" type="SETUP">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-03-03T16:14:37.234941" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x76bb9b9a4190&gt;</msg>
+<msg time="2026-03-03T16:20:53.331802" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7b8e692c8130&gt;</msg>
 <var>${options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-03-03T16:14:37.233377" elapsed="0.001699"/>
+<status status="PASS" start="2026-03-03T16:20:53.329999" elapsed="0.002351"/>
 </kw>
 <kw name="Load Test Data" owner="testdata">
 <kw name="Load Test Data From Yaml" owner="testdata">
-<msg time="2026-03-03T16:14:37.243405" level="INFO">${data} = {'users': {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': ...</msg>
+<msg time="2026-03-03T16:20:53.343588" level="INFO">${data} = {'users': {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': ...</msg>
 <var>${data}</var>
 <arg>data/test_users.yaml</arg>
-<status status="PASS" start="2026-03-03T16:14:37.237033" elapsed="0.006498"/>
+<status status="PASS" start="2026-03-03T16:20:53.336241" elapsed="0.007502"/>
 </kw>
 <kw name="Set Suite Variable" owner="BuiltIn">
-<msg time="2026-03-03T16:14:37.245362" level="INFO">${TESTDATA} = {'users': {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': ...</msg>
+<msg time="2026-03-03T16:20:53.347186" level="INFO">${TESTDATA} = {'users': {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': ...</msg>
 <arg>${TESTDATA}</arg>
 <arg>${data}</arg>
 <doc>Makes a variable available everywhere within the scope of the current suite.</doc>
-<status status="PASS" start="2026-03-03T16:14:37.244068" elapsed="0.001469"/>
+<status status="PASS" start="2026-03-03T16:20:53.344258" elapsed="0.003136"/>
 </kw>
-<status status="PASS" start="2026-03-03T16:14:37.235813" elapsed="0.009976"/>
+<status status="PASS" start="2026-03-03T16:20:53.335269" elapsed="0.012404"/>
 </kw>
 <kw name="Creer Un Webdriver" owner="socle">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-03-03T16:14:37.248550" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x76bb9b7ed030&gt;</msg>
+<msg time="2026-03-03T16:20:53.351669" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7b8e6930cf10&gt;</msg>
 <var>${options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-03-03T16:14:37.247410" elapsed="0.001230"/>
+<status status="PASS" start="2026-03-03T16:20:53.349981" elapsed="0.002057"/>
 </kw>
 <kw name="Run Keyword If" owner="BuiltIn">
 <arg>'${HEADLESS}'=='true'</arg>
@@ -43,247 +43,221 @@
 <arg>add_argument</arg>
 <arg>argument=--headless</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2026-03-03T16:14:37.249112" elapsed="0.001477"/>
+<status status="PASS" start="2026-03-03T16:20:53.352862" elapsed="0.002376"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${options}</arg>
 <arg>add_argument</arg>
 <arg>argument=--no-sandbox</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2026-03-03T16:14:37.251261" elapsed="0.001114"/>
+<status status="PASS" start="2026-03-03T16:20:53.355900" elapsed="0.001150"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${options}</arg>
 <arg>add_argument</arg>
 <arg>argument=--disable-dev-shm-usage</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2026-03-03T16:14:37.252885" elapsed="0.001605"/>
+<status status="PASS" start="2026-03-03T16:20:53.357566" elapsed="0.013776"/>
 </kw>
 <kw name="Call Method" owner="BuiltIn">
 <arg>${options}</arg>
 <arg>add_argument</arg>
 <arg>argument=--window-size=1920,1080</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2026-03-03T16:14:37.254987" elapsed="0.001125"/>
+<status status="PASS" start="2026-03-03T16:20:53.371916" elapsed="0.001037"/>
 </kw>
 <kw name="Create Webdriver" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:37.257767" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<msg time="2026-03-03T16:20:53.384658" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
 <arg>Chrome</arg>
 <arg>options=${options}</arg>
 <doc>Creates an instance of Selenium WebDriver.</doc>
-<status status="PASS" start="2026-03-03T16:14:37.256873" elapsed="1.770058"/>
+<status status="PASS" start="2026-03-03T16:20:53.373431" elapsed="1.289187"/>
 </kw>
 <kw name="Set Selenium Timeout" owner="SeleniumLibrary">
 <arg>${TIMEOUT}</arg>
 <doc>Sets the timeout that is used by various keywords.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.027405" elapsed="0.005521"/>
+<status status="PASS" start="2026-03-03T16:20:54.663117" elapsed="0.002446"/>
 </kw>
-<status status="PASS" start="2026-03-03T16:14:37.246403" elapsed="1.786827"/>
+<status status="PASS" start="2026-03-03T16:20:53.348302" elapsed="1.317518"/>
 </kw>
 <kw name="Aller Vers L'URL" owner="socle">
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:39.036661" level="INFO">Opening url 'http://localhost:8080'</msg>
+<msg time="2026-03-03T16:20:54.667349" level="INFO">Opening url 'http://localhost:8080'</msg>
 <arg>${URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.036142" elapsed="0.392474"/>
+<status status="PASS" start="2026-03-03T16:20:54.666992" elapsed="0.328301"/>
 </kw>
 <arg>${BASE_URL}</arg>
-<status status="PASS" start="2026-03-03T16:14:39.033811" elapsed="0.395083"/>
+<status status="PASS" start="2026-03-03T16:20:54.666286" elapsed="0.329336"/>
 </kw>
 <kw name="La Page &quot;Login&quot; Est Visible" owner="login_page">
 <kw name="L'Element Doit Etre Visible" owner="socle">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:39.501454" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
+<msg time="2026-03-03T16:20:55.059580" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.435229" elapsed="0.066438"/>
+<status status="PASS" start="2026-03-03T16:20:54.998597" elapsed="0.062706"/>
 </kw>
 <arg>${LOGIN_EMAIL}</arg>
-<status status="PASS" start="2026-03-03T16:14:39.430238" elapsed="0.071680"/>
+<status status="PASS" start="2026-03-03T16:20:54.997151" elapsed="0.064490"/>
 </kw>
 <doc>La page de login doit petre visible</doc>
-<status status="PASS" start="2026-03-03T16:14:39.429438" elapsed="0.072649"/>
+<status status="PASS" start="2026-03-03T16:20:54.996337" elapsed="0.065566"/>
 </kw>
-<status status="PASS" start="2026-03-03T16:14:37.231373" elapsed="2.270865"/>
+<status status="PASS" start="2026-03-03T16:20:53.327413" elapsed="1.734735"/>
 </kw>
 <test id="s1-s1-t1" name="La Page Virements Est Accessible" line="11">
 <kw name="Obtenir Les Identifiants Standards" owner="auth_service">
 <kw name="Get Standard Credentials" owner="testdata">
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:39.513734" level="INFO">${users} = {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': True, 'two...</msg>
+<msg time="2026-03-03T16:20:55.072260" level="INFO">${users} = {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': True, 'two...</msg>
 <var>${users}</var>
 <arg>${TESTDATA}</arg>
 <arg>users</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.510669" elapsed="0.003175"/>
+<status status="PASS" start="2026-03-03T16:20:55.071006" elapsed="0.001370"/>
 </kw>
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:39.515028" level="INFO">${standard} = {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}</msg>
+<msg time="2026-03-03T16:20:55.073991" level="INFO">${standard} = {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}</msg>
 <var>${standard}</var>
 <arg>${users}</arg>
 <arg>standard</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.514324" elapsed="0.000818"/>
+<status status="PASS" start="2026-03-03T16:20:55.072880" elapsed="0.001258"/>
 </kw>
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:39.516551" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-03T16:20:55.078559" level="INFO">${email} = test@digitalbank.fr</msg>
 <var>${email}</var>
 <arg>${standard}</arg>
 <arg>email</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.515573" elapsed="0.001101"/>
+<status status="PASS" start="2026-03-03T16:20:55.076100" elapsed="0.002586"/>
 </kw>
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:39.519108" level="INFO">${password} = Test1234!</msg>
+<msg time="2026-03-03T16:20:55.081278" level="INFO">${password} = Test1234!</msg>
 <var>${password}</var>
 <arg>${standard}</arg>
 <arg>password</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.517199" elapsed="0.002067"/>
+<status status="PASS" start="2026-03-03T16:20:55.079921" elapsed="0.001463"/>
 </kw>
 <return>
 <value>${email}</value>
 <value>${password}</value>
-<status status="PASS" start="2026-03-03T16:14:39.519546" elapsed="0.000216"/>
+<status status="PASS" start="2026-03-03T16:20:55.081609" elapsed="0.000187"/>
 </return>
-<msg time="2026-03-03T16:14:39.523550" level="INFO">${email} = test@digitalbank.fr</msg>
-<msg time="2026-03-03T16:14:39.523776" level="INFO">${password} = Test1234!</msg>
+<msg time="2026-03-03T16:20:55.082387" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-03T16:20:55.082542" level="INFO">${password} = Test1234!</msg>
 <var>${email}</var>
 <var>${password}</var>
-<status status="PASS" start="2026-03-03T16:14:39.509635" elapsed="0.014237"/>
+<status status="PASS" start="2026-03-03T16:20:55.070077" elapsed="0.012565"/>
 </kw>
 <return>
 <value>${email}</value>
 <value>${password}</value>
-<status status="PASS" start="2026-03-03T16:14:39.524083" elapsed="0.000129"/>
+<status status="PASS" start="2026-03-03T16:20:55.082842" elapsed="0.001002"/>
 </return>
-<msg time="2026-03-03T16:14:39.524997" level="INFO">${email} = test@digitalbank.fr</msg>
-<msg time="2026-03-03T16:14:39.526636" level="INFO">${password} = Test1234!</msg>
+<msg time="2026-03-03T16:20:55.084447" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-03T16:20:55.086464" level="INFO">${password} = Test1234!</msg>
 <var>${email}</var>
 <var>${password}</var>
 <doc>Obtenir les identifiants standards</doc>
-<status status="PASS" start="2026-03-03T16:14:39.508519" elapsed="0.018267"/>
+<status status="PASS" start="2026-03-03T16:20:55.068663" elapsed="0.017927"/>
 </kw>
 <kw name="Login Avec Identifiants" owner="auth_service">
 <kw name="La Page &quot;Login&quot; Est Visible" owner="login_page">
 <kw name="L'Element Doit Etre Visible" owner="socle">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:39.585951" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
+<msg time="2026-03-03T16:20:55.129428" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.538952" elapsed="0.047245"/>
+<status status="PASS" start="2026-03-03T16:20:55.097217" elapsed="0.032441"/>
 </kw>
 <arg>${LOGIN_EMAIL}</arg>
-<status status="PASS" start="2026-03-03T16:14:39.534668" elapsed="0.051773"/>
+<status status="PASS" start="2026-03-03T16:20:55.096076" elapsed="0.033846"/>
 </kw>
 <doc>La page de login doit petre visible</doc>
-<status status="PASS" start="2026-03-03T16:14:39.532199" elapsed="0.054435"/>
+<status status="PASS" start="2026-03-03T16:20:55.090673" elapsed="0.039519"/>
 </kw>
 <kw name="Saisir Email" owner="login_page">
 <kw name="Saisir Le Texte" owner="socle">
 <kw name="Clear Element Text" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.590102" elapsed="0.124120"/>
+<status status="PASS" start="2026-03-03T16:20:55.132755" elapsed="0.098437"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.715169" elapsed="0.046131"/>
+<status status="PASS" start="2026-03-03T16:20:55.231515" elapsed="0.034790"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:39.762531" level="INFO">Typing text 'test@digitalbank.fr' into text field 'css=[data-testid="input-email"]'.</msg>
+<msg time="2026-03-03T16:20:55.267848" level="INFO">Typing text 'test@digitalbank.fr' into text field 'css=[data-testid="input-email"]'.</msg>
 <arg>${locator}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:39.761809" elapsed="0.251514"/>
+<status status="PASS" start="2026-03-03T16:20:55.266998" elapsed="0.233167"/>
 </kw>
 <arg>${LOGIN_EMAIL}</arg>
 <arg>${email}</arg>
-<status status="PASS" start="2026-03-03T16:14:39.588942" elapsed="0.424644"/>
+<status status="PASS" start="2026-03-03T16:20:55.131893" elapsed="0.368559"/>
 </kw>
 <arg>${email}</arg>
 <doc>Saisir l'email</doc>
-<status status="PASS" start="2026-03-03T16:14:39.587223" elapsed="0.426556"/>
+<status status="PASS" start="2026-03-03T16:20:55.130688" elapsed="0.369976"/>
 </kw>
 <kw name="Saisir Mot De Passe" owner="login_page">
 <kw name="Saisir Le Mot De Passe" owner="socle">
 <kw name="Clear Element Text" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:40.017726" elapsed="0.172015"/>
+<status status="PASS" start="2026-03-03T16:20:55.505645" elapsed="0.118091"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:40.190616" elapsed="0.031960"/>
+<status status="PASS" start="2026-03-03T16:20:55.624191" elapsed="0.030402"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:40.224401" level="INFO">Typing password into text field 'css=[data-testid="input-password"]'.</msg>
-<msg time="2026-03-03T16:14:40.311406" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2026-03-03T16:20:55.656101" level="INFO">Typing password into text field 'css=[data-testid="input-password"]'.</msg>
+<msg time="2026-03-03T16:20:55.724923" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>${locator}</arg>
 <arg>${pswd}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:40.223343" elapsed="0.254899"/>
+<status status="PASS" start="2026-03-03T16:20:55.655097" elapsed="0.195184"/>
 </kw>
 <arg>${LOGIN_PASSWORD}</arg>
 <arg>${password}</arg>
-<status status="PASS" start="2026-03-03T16:14:40.015563" elapsed="0.462976"/>
+<status status="PASS" start="2026-03-03T16:20:55.503203" elapsed="0.347350"/>
 </kw>
 <kw name="Cliquer Sur Le Bouton" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:40.480291" elapsed="0.057557"/>
+<status status="PASS" start="2026-03-03T16:20:55.854443" elapsed="0.038112"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:40.540869" level="INFO">Clicking button 'css=[data-testid="btn-login"]'.</msg>
+<msg time="2026-03-03T16:20:55.893556" level="INFO">Clicking button 'css=[data-testid="btn-login"]'.</msg>
 <arg>${locator}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:40.538344" elapsed="0.299772"/>
+<status status="PASS" start="2026-03-03T16:20:55.893025" elapsed="0.260995"/>
 </kw>
 <arg>${LOGIN_SUBMIT}</arg>
-<status status="PASS" start="2026-03-03T16:14:40.479192" elapsed="0.359174"/>
+<status status="PASS" start="2026-03-03T16:20:55.852989" elapsed="0.301316"/>
 </kw>
 <arg>${password}</arg>
 <doc>Saisir le mot de passe</doc>
-<status status="PASS" start="2026-03-03T16:14:40.014441" elapsed="0.824105"/>
+<status status="PASS" start="2026-03-03T16:20:55.501568" elapsed="0.652902"/>
 </kw>
 <arg>${email}</arg>
 <arg>${password}</arg>
 <doc>Saisit les identifiants et soumet le formulaire de login</doc>
-<status status="PASS" start="2026-03-03T16:14:39.529104" elapsed="1.311691"/>
-</kw>
-<kw name="La Page &quot;Commune&quot; Est Visible" owner="main_page">
-<kw name="L'Element Doit Etre Visible" owner="socle">
-<kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:40.919374" level="INFO">Element 'css=[data-testid="tab-dashboard"]' is displayed.</msg>
-<arg>${locator}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:40.844392" elapsed="0.075203"/>
-</kw>
-<arg>${TAB_DASHBOARD}</arg>
-<status status="PASS" start="2026-03-03T16:14:40.843413" elapsed="0.076425"/>
-</kw>
-<kw name="L'Element Doit Etre Visible" owner="socle">
-<kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:40.964930" level="INFO">Element 'css=[data-testid="btn-logout"]' is displayed.</msg>
-<arg>${locator}</arg>
-<arg>${TIMEOUT}</arg>
-<doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:40.921226" elapsed="0.043925"/>
-</kw>
-<arg>${BTN_LOGOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:40.920336" elapsed="0.046490"/>
-</kw>
-<doc>La page de login doit petre visible</doc>
-<status status="PASS" start="2026-03-03T16:14:40.841553" elapsed="0.125564"/>
+<status status="PASS" start="2026-03-03T16:20:55.087779" elapsed="1.066854"/>
 </kw>
 <kw name="Se Rendre Sur La Page Des Virements" owner="virements_service">
 <kw name="Ouvrir L'Onglet Virements" owner="virements_page">
@@ -292,52 +266,52 @@
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:40.973650" elapsed="0.088726"/>
+<status status="PASS" start="2026-03-03T16:20:56.162114" elapsed="0.050676"/>
 </kw>
 <arg>${NAV_VIREMENTS}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:40.972495" elapsed="0.090149"/>
+<status status="PASS" start="2026-03-03T16:20:56.158005" elapsed="0.055066"/>
 </kw>
 <kw name="Scroller En Haut De La Page" owner="socle">
 <kw name="Press Keys" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:41.064678" level="INFO">Sending key(s) ('HOME',) to page.</msg>
-<msg time="2026-03-03T16:14:41.067349" level="INFO">Pressing special key HOME to browser.</msg>
-<msg time="2026-03-03T16:14:41.067504" level="INFO">Releasing special key HOME.</msg>
+<msg time="2026-03-03T16:20:56.218679" level="INFO">Sending key(s) ('HOME',) to page.</msg>
+<msg time="2026-03-03T16:20:56.218968" level="INFO">Pressing special key HOME to browser.</msg>
+<msg time="2026-03-03T16:20:56.219149" level="INFO">Releasing special key HOME.</msg>
 <arg>None</arg>
 <arg>HOME</arg>
 <doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<status status="PASS" start="2026-03-03T16:14:41.063986" elapsed="0.028383"/>
+<status status="PASS" start="2026-03-03T16:20:56.214647" elapsed="0.029108"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-03-03T16:14:42.093772" level="INFO">Slept 1 second.</msg>
+<msg time="2026-03-03T16:20:57.245651" level="INFO">Slept 1 second.</msg>
 <arg>1s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-03-03T16:14:41.092841" elapsed="1.001139"/>
+<status status="PASS" start="2026-03-03T16:20:56.244440" elapsed="1.001374"/>
 </kw>
 <doc>Scroller en haut de la page</doc>
-<status status="PASS" start="2026-03-03T16:14:41.063217" elapsed="1.030974"/>
+<status status="PASS" start="2026-03-03T16:20:56.213686" elapsed="1.032277"/>
 </kw>
 <kw name="Cliquer Sur L'Element" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.095412" elapsed="0.024401"/>
+<status status="PASS" start="2026-03-03T16:20:57.246976" elapsed="0.017809"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:42.120867" level="INFO">Clicking element 'xpath=//button[@data-testid="tab-transfer"]'.</msg>
+<msg time="2026-03-03T16:20:57.265806" level="INFO">Clicking element 'xpath=//button[@data-testid="tab-transfer"]'.</msg>
 <arg>${locator}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.120202" elapsed="0.109845"/>
+<status status="PASS" start="2026-03-03T16:20:57.265234" elapsed="0.088536"/>
 </kw>
 <arg>${NAV_VIREMENTS}</arg>
-<status status="PASS" start="2026-03-03T16:14:42.094642" elapsed="0.135640"/>
+<status status="PASS" start="2026-03-03T16:20:57.246392" elapsed="0.109160"/>
 </kw>
 <doc>Ouvre l'onglet Virements depuis le menu principal</doc>
-<status status="PASS" start="2026-03-03T16:14:40.970209" elapsed="1.261104"/>
+<status status="PASS" start="2026-03-03T16:20:56.156670" elapsed="1.199169"/>
 </kw>
 <doc>Ouvre l'onglet Virements</doc>
-<status status="PASS" start="2026-03-03T16:14:40.967932" elapsed="1.263608"/>
+<status status="PASS" start="2026-03-03T16:20:56.155762" elapsed="1.200236"/>
 </kw>
 <kw name="La Page Virements Est Visible" owner="virements_service">
 <kw name="Obtenir La Présence De La Page Virements" owner="virements_page">
@@ -346,224 +320,224 @@
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.239743" elapsed="0.043591"/>
+<status status="PASS" start="2026-03-03T16:20:57.359447" elapsed="0.030171"/>
 </kw>
 <arg>${VIREMENTS_TITLE}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:42.236202" elapsed="0.047379"/>
+<status status="PASS" start="2026-03-03T16:20:57.358508" elapsed="0.031339"/>
 </kw>
 <doc>Vérifie que le titre de la page virements est visible</doc>
-<status status="PASS" start="2026-03-03T16:14:42.235275" elapsed="0.048489"/>
+<status status="PASS" start="2026-03-03T16:20:57.357342" elapsed="0.032644"/>
 </kw>
 <doc>Vérifie que la page virements est bien affichée</doc>
-<status status="PASS" start="2026-03-03T16:14:42.233582" elapsed="0.050333"/>
+<status status="PASS" start="2026-03-03T16:20:57.356556" elapsed="0.033551"/>
 </kw>
 <kw name="Logout" owner="auth_service">
 <kw name="Cliquer sur &quot;Déconnexion&quot;" owner="login_page">
 <kw name="L'Element Doit Etre Visible" owner="socle">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:42.313271" level="INFO">Element 'css=[data-testid="btn-logout"]' is displayed.</msg>
+<msg time="2026-03-03T16:20:57.421027" level="INFO">Element 'css=[data-testid="btn-logout"]' is displayed.</msg>
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.287749" elapsed="0.025703"/>
+<status status="PASS" start="2026-03-03T16:20:57.393632" elapsed="0.027560"/>
 </kw>
 <arg>${BTN_LOGOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:42.286867" elapsed="0.026778"/>
+<status status="PASS" start="2026-03-03T16:20:57.392069" elapsed="0.029312"/>
 </kw>
 <kw name="Cliquer Sur Le Bouton" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.314799" elapsed="0.023335"/>
+<status status="PASS" start="2026-03-03T16:20:57.422511" elapsed="0.017035"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:42.339565" level="INFO">Clicking button 'css=[data-testid="btn-logout"]'.</msg>
+<msg time="2026-03-03T16:20:57.440555" level="INFO">Clicking button 'css=[data-testid="btn-logout"]'.</msg>
 <arg>${locator}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.338545" elapsed="0.185291"/>
+<status status="PASS" start="2026-03-03T16:20:57.439976" elapsed="0.159792"/>
 </kw>
 <arg>${BTN_LOGOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:42.314077" elapsed="0.210026"/>
+<status status="PASS" start="2026-03-03T16:20:57.421830" elapsed="0.178220"/>
 </kw>
 <doc>Cliquer sur le bouton "déconnexion"</doc>
-<status status="PASS" start="2026-03-03T16:14:42.285956" elapsed="0.238315"/>
+<status status="PASS" start="2026-03-03T16:20:57.391196" elapsed="0.209057"/>
 </kw>
 <kw name="La Page &quot;Login&quot; Est Visible" owner="login_page">
 <kw name="L'Element Doit Etre Visible" owner="socle">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:42.555888" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
+<msg time="2026-03-03T16:20:57.654222" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.526741" elapsed="0.029340"/>
+<status status="PASS" start="2026-03-03T16:20:57.616788" elapsed="0.037634"/>
 </kw>
 <arg>${LOGIN_EMAIL}</arg>
-<status status="PASS" start="2026-03-03T16:14:42.525792" elapsed="0.030577"/>
+<status status="PASS" start="2026-03-03T16:20:57.615823" elapsed="0.038886"/>
 </kw>
 <doc>La page de login doit petre visible</doc>
-<status status="PASS" start="2026-03-03T16:14:42.524791" elapsed="0.031734"/>
+<status status="PASS" start="2026-03-03T16:20:57.604549" elapsed="0.050310"/>
 </kw>
 <doc>Déconnexion et retour à la page login</doc>
-<status status="PASS" start="2026-03-03T16:14:42.284936" elapsed="0.271721"/>
+<status status="PASS" start="2026-03-03T16:20:57.390639" elapsed="0.264353"/>
 </kw>
 <doc>Vérifie que la page Virements est accessible depuis le menu principal</doc>
 <tag>smoke</tag>
 <tag>virements</tag>
-<status status="PASS" start="2026-03-03T16:14:39.502409" elapsed="3.054656"/>
+<status status="PASS" start="2026-03-03T16:20:55.062416" elapsed="2.593012"/>
 </test>
-<test id="s1-s1-t2" name="Effectuer Un Virement Interne Valide" line="22">
+<test id="s1-s1-t2" name="Effectuer Un Virement Interne Valide" line="21">
 <kw name="Obtenir Les Identifiants Standards" owner="auth_service">
 <kw name="Get Standard Credentials" owner="testdata">
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:42.562962" level="INFO">${users} = {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': True, 'two...</msg>
+<msg time="2026-03-03T16:20:57.659776" level="INFO">${users} = {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': True, 'two...</msg>
 <var>${users}</var>
 <arg>${TESTDATA}</arg>
 <arg>users</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.561264" elapsed="0.002397"/>
+<status status="PASS" start="2026-03-03T16:20:57.659205" elapsed="0.000659"/>
 </kw>
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:42.565399" level="INFO">${standard} = {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}</msg>
+<msg time="2026-03-03T16:20:57.660934" level="INFO">${standard} = {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}</msg>
 <var>${standard}</var>
 <arg>${users}</arg>
 <arg>standard</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.564410" elapsed="0.001085"/>
+<status status="PASS" start="2026-03-03T16:20:57.660289" elapsed="0.000746"/>
 </kw>
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:42.566793" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-03T16:20:57.662201" level="INFO">${email} = test@digitalbank.fr</msg>
 <var>${email}</var>
 <arg>${standard}</arg>
 <arg>email</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.566167" elapsed="0.000719"/>
+<status status="PASS" start="2026-03-03T16:20:57.661500" elapsed="0.000804"/>
 </kw>
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:42.568119" level="INFO">${password} = Test1234!</msg>
+<msg time="2026-03-03T16:20:57.663378" level="INFO">${password} = Test1234!</msg>
 <var>${password}</var>
 <arg>${standard}</arg>
 <arg>password</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.567282" elapsed="0.000937"/>
+<status status="PASS" start="2026-03-03T16:20:57.662760" elapsed="0.000705"/>
 </kw>
 <return>
 <value>${email}</value>
 <value>${password}</value>
-<status status="PASS" start="2026-03-03T16:14:42.568405" elapsed="0.000115"/>
+<status status="PASS" start="2026-03-03T16:20:57.663661" elapsed="0.000138"/>
 </return>
-<msg time="2026-03-03T16:14:42.569639" level="INFO">${email} = test@digitalbank.fr</msg>
-<msg time="2026-03-03T16:14:42.569807" level="INFO">${password} = Test1234!</msg>
+<msg time="2026-03-03T16:20:57.664399" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-03T16:20:57.664547" level="INFO">${password} = Test1234!</msg>
 <var>${email}</var>
 <var>${password}</var>
-<status status="PASS" start="2026-03-03T16:14:42.560512" elapsed="0.009367"/>
+<status status="PASS" start="2026-03-03T16:20:57.658505" elapsed="0.006110"/>
 </kw>
 <return>
 <value>${email}</value>
 <value>${password}</value>
-<status status="PASS" start="2026-03-03T16:14:42.570128" elapsed="0.000107"/>
+<status status="PASS" start="2026-03-03T16:20:57.664800" elapsed="0.000108"/>
 </return>
-<msg time="2026-03-03T16:14:42.570740" level="INFO">${email} = test@digitalbank.fr</msg>
-<msg time="2026-03-03T16:14:42.570864" level="INFO">${password} = Test1234!</msg>
+<msg time="2026-03-03T16:20:57.665430" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-03T16:20:57.665560" level="INFO">${password} = Test1234!</msg>
 <var>${email}</var>
 <var>${password}</var>
 <doc>Obtenir les identifiants standards</doc>
-<status status="PASS" start="2026-03-03T16:14:42.559430" elapsed="0.011507"/>
+<status status="PASS" start="2026-03-03T16:20:57.657616" elapsed="0.008012"/>
 </kw>
 <kw name="Login Avec Identifiants" owner="auth_service">
 <kw name="La Page &quot;Login&quot; Est Visible" owner="login_page">
 <kw name="L'Element Doit Etre Visible" owner="socle">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:42.608304" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
+<msg time="2026-03-03T16:20:57.695239" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.575936" elapsed="0.032604"/>
+<status status="PASS" start="2026-03-03T16:20:57.669614" elapsed="0.025811"/>
 </kw>
 <arg>${LOGIN_EMAIL}</arg>
-<status status="PASS" start="2026-03-03T16:14:42.575099" elapsed="0.033716"/>
+<status status="PASS" start="2026-03-03T16:20:57.668584" elapsed="0.027047"/>
 </kw>
 <doc>La page de login doit petre visible</doc>
-<status status="PASS" start="2026-03-03T16:14:42.573385" elapsed="0.035761"/>
+<status status="PASS" start="2026-03-03T16:20:57.667517" elapsed="0.028267"/>
 </kw>
 <kw name="Saisir Email" owner="login_page">
 <kw name="Saisir Le Texte" owner="socle">
 <kw name="Clear Element Text" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.612245" elapsed="0.076377"/>
+<status status="PASS" start="2026-03-03T16:20:57.698565" elapsed="0.055422"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.689302" elapsed="0.041209"/>
+<status status="PASS" start="2026-03-03T16:20:57.754572" elapsed="0.026104"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:42.731605" level="INFO">Typing text 'test@digitalbank.fr' into text field 'css=[data-testid="input-email"]'.</msg>
+<msg time="2026-03-03T16:20:57.781881" level="INFO">Typing text 'test@digitalbank.fr' into text field 'css=[data-testid="input-email"]'.</msg>
 <arg>${locator}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.730980" elapsed="0.222867"/>
+<status status="PASS" start="2026-03-03T16:20:57.781205" elapsed="0.168882"/>
 </kw>
 <arg>${LOGIN_EMAIL}</arg>
 <arg>${email}</arg>
-<status status="PASS" start="2026-03-03T16:14:42.611125" elapsed="0.343042"/>
+<status status="PASS" start="2026-03-03T16:20:57.697123" elapsed="0.253255"/>
 </kw>
 <arg>${email}</arg>
 <doc>Saisir l'email</doc>
-<status status="PASS" start="2026-03-03T16:14:42.609963" elapsed="0.344398"/>
+<status status="PASS" start="2026-03-03T16:20:57.696269" elapsed="0.254299"/>
 </kw>
 <kw name="Saisir Mot De Passe" owner="login_page">
 <kw name="Saisir Le Mot De Passe" owner="socle">
 <kw name="Clear Element Text" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:42.957794" elapsed="0.131045"/>
+<status status="PASS" start="2026-03-03T16:20:57.954223" elapsed="0.137249"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:43.089428" elapsed="0.043226"/>
+<status status="PASS" start="2026-03-03T16:20:58.092013" elapsed="0.041699"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:43.133812" level="INFO">Typing password into text field 'css=[data-testid="input-password"]'.</msg>
-<msg time="2026-03-03T16:14:43.199759" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2026-03-03T16:20:58.134955" level="INFO">Typing password into text field 'css=[data-testid="input-password"]'.</msg>
+<msg time="2026-03-03T16:20:58.201064" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>${locator}</arg>
 <arg>${pswd}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:43.133133" elapsed="0.203653"/>
+<status status="PASS" start="2026-03-03T16:20:58.134275" elapsed="0.142682"/>
 </kw>
 <arg>${LOGIN_PASSWORD}</arg>
 <arg>${password}</arg>
-<status status="PASS" start="2026-03-03T16:14:42.956770" elapsed="0.380338"/>
+<status status="PASS" start="2026-03-03T16:20:57.952934" elapsed="0.324279"/>
 </kw>
 <kw name="Cliquer Sur Le Bouton" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:43.339868" elapsed="0.041946"/>
+<status status="PASS" start="2026-03-03T16:20:58.278772" elapsed="0.030894"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:43.382828" level="INFO">Clicking button 'css=[data-testid="btn-login"]'.</msg>
+<msg time="2026-03-03T16:20:58.310711" level="INFO">Clicking button 'css=[data-testid="btn-login"]'.</msg>
 <arg>${locator}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:43.382360" elapsed="0.243471"/>
+<status status="PASS" start="2026-03-03T16:20:58.310135" elapsed="0.137716"/>
 </kw>
 <arg>${LOGIN_SUBMIT}</arg>
-<status status="PASS" start="2026-03-03T16:14:43.338349" elapsed="0.287788"/>
+<status status="PASS" start="2026-03-03T16:20:58.277794" elapsed="0.170332"/>
 </kw>
 <arg>${password}</arg>
 <doc>Saisir le mot de passe</doc>
-<status status="PASS" start="2026-03-03T16:14:42.954917" elapsed="0.673828"/>
+<status status="PASS" start="2026-03-03T16:20:57.951106" elapsed="0.497199"/>
 </kw>
 <arg>${email}</arg>
 <arg>${password}</arg>
 <doc>Saisit les identifiants et soumet le formulaire de login</doc>
-<status status="PASS" start="2026-03-03T16:14:42.571828" elapsed="1.057172"/>
+<status status="PASS" start="2026-03-03T16:20:57.666401" elapsed="0.782045"/>
 </kw>
 <kw name="Se Rendre Sur La Page Des Virements" owner="virements_service">
 <kw name="Ouvrir L'Onglet Virements" owner="virements_page">
@@ -572,52 +546,52 @@
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:43.634442" elapsed="0.034790"/>
+<status status="PASS" start="2026-03-03T16:20:58.453080" elapsed="0.037237"/>
 </kw>
 <arg>${NAV_VIREMENTS}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:43.632982" elapsed="0.036481"/>
+<status status="PASS" start="2026-03-03T16:20:58.451780" elapsed="0.038933"/>
 </kw>
 <kw name="Scroller En Haut De La Page" owner="socle">
 <kw name="Press Keys" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:43.671317" level="INFO">Sending key(s) ('HOME',) to page.</msg>
-<msg time="2026-03-03T16:14:43.671488" level="INFO">Pressing special key HOME to browser.</msg>
-<msg time="2026-03-03T16:14:43.671683" level="INFO">Releasing special key HOME.</msg>
+<msg time="2026-03-03T16:20:58.493567" level="INFO">Sending key(s) ('HOME',) to page.</msg>
+<msg time="2026-03-03T16:20:58.493861" level="INFO">Pressing special key HOME to browser.</msg>
+<msg time="2026-03-03T16:20:58.494054" level="INFO">Releasing special key HOME.</msg>
 <arg>None</arg>
 <arg>HOME</arg>
 <doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<status status="PASS" start="2026-03-03T16:14:43.670663" elapsed="0.013199"/>
+<status status="PASS" start="2026-03-03T16:20:58.492523" elapsed="0.014161"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-03-03T16:14:44.685061" level="INFO">Slept 1 second.</msg>
+<msg time="2026-03-03T16:20:59.508420" level="INFO">Slept 1 second.</msg>
 <arg>1s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-03-03T16:14:43.684266" elapsed="1.000949"/>
+<status status="PASS" start="2026-03-03T16:20:58.507310" elapsed="1.001673"/>
 </kw>
 <doc>Scroller en haut de la page</doc>
-<status status="PASS" start="2026-03-03T16:14:43.669926" elapsed="1.015429"/>
+<status status="PASS" start="2026-03-03T16:20:58.491366" elapsed="1.018113"/>
 </kw>
 <kw name="Cliquer Sur L'Element" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:44.686303" elapsed="0.017610"/>
+<status status="PASS" start="2026-03-03T16:20:59.512408" elapsed="0.048646"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:44.704742" level="INFO">Clicking element 'xpath=//button[@data-testid="tab-transfer"]'.</msg>
+<msg time="2026-03-03T16:20:59.562125" level="INFO">Clicking element 'xpath=//button[@data-testid="tab-transfer"]'.</msg>
 <arg>${locator}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:44.704303" elapsed="0.080502"/>
+<status status="PASS" start="2026-03-03T16:20:59.561645" elapsed="0.074481"/>
 </kw>
 <arg>${NAV_VIREMENTS}</arg>
-<status status="PASS" start="2026-03-03T16:14:44.685651" elapsed="0.099433"/>
+<status status="PASS" start="2026-03-03T16:20:59.510723" elapsed="0.125676"/>
 </kw>
 <doc>Ouvre l'onglet Virements depuis le menu principal</doc>
-<status status="PASS" start="2026-03-03T16:14:43.632012" elapsed="1.153275"/>
+<status status="PASS" start="2026-03-03T16:20:58.449971" elapsed="1.186616"/>
 </kw>
 <doc>Ouvre l'onglet Virements</doc>
-<status status="PASS" start="2026-03-03T16:14:43.630492" elapsed="1.155001"/>
+<status status="PASS" start="2026-03-03T16:20:58.449033" elapsed="1.187749"/>
 </kw>
 <kw name="Selectionner Compte Source" owner="virements_service">
 <kw name="Selectionner Compte Source Dans La Liste" owner="virements_page">
@@ -626,31 +600,31 @@
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:44.790528" elapsed="0.026351"/>
+<status status="PASS" start="2026-03-03T16:20:59.641786" elapsed="0.027860"/>
 </kw>
 <arg>${SOURCE_SELECT}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:44.789508" elapsed="0.027634"/>
+<status status="PASS" start="2026-03-03T16:20:59.639983" elapsed="0.029897"/>
 </kw>
 <kw name="Selectionner Depuis Liste Par Valeur" owner="socle">
 <kw name="Select From List By Value" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:44.819071" level="INFO">Selecting options from selection list 'xpath=//select[@data-testid="select-from-account"]' by value 4.</msg>
+<msg time="2026-03-03T16:20:59.671906" level="INFO">Selecting options from selection list 'xpath=//select[@data-testid="select-from-account"]' by value 4.</msg>
 <arg>${SOURCE_SELECT}</arg>
 <arg>${compte}</arg>
 <doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<status status="PASS" start="2026-03-03T16:14:44.818503" elapsed="0.065118"/>
+<status status="PASS" start="2026-03-03T16:20:59.671306" elapsed="0.053843"/>
 </kw>
 <arg>${SOURCE_SELECT}</arg>
 <arg>${compte}</arg>
-<status status="PASS" start="2026-03-03T16:14:44.817617" elapsed="0.066233"/>
+<status status="PASS" start="2026-03-03T16:20:59.670337" elapsed="0.055050"/>
 </kw>
 <arg>${compte}</arg>
 <doc>Séléectionne le compte source dans la liste des comptes</doc>
-<status status="PASS" start="2026-03-03T16:14:44.787558" elapsed="0.096433"/>
+<status status="PASS" start="2026-03-03T16:20:59.638853" elapsed="0.086669"/>
 </kw>
 <arg>4</arg>
 <doc>Sélectionner le compte source du virement</doc>
-<status status="PASS" start="2026-03-03T16:14:44.786256" elapsed="0.097889"/>
+<status status="PASS" start="2026-03-03T16:20:59.637481" elapsed="0.088170"/>
 </kw>
 <kw name="Selectionner Compte Destination" owner="virements_service">
 <kw name="Selectionner Compte Destinataire Dans La Liste" owner="virements_page">
@@ -659,32 +633,32 @@
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:44.887057" elapsed="0.024319"/>
+<status status="PASS" start="2026-03-03T16:20:59.727794" elapsed="0.022432"/>
 </kw>
 <arg>${DEST_SELECT}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:44.886327" elapsed="0.025279"/>
+<status status="PASS" start="2026-03-03T16:20:59.727332" elapsed="0.023103"/>
 </kw>
 <kw name="Selectionner Depuis Liste Par Valeur" owner="socle">
 <kw name="Select From List By Value" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:44.913734" level="INFO">Selecting options from selection list 'xpath=//select[@data-testid="select-to-account"]' by value 5.</msg>
+<msg time="2026-03-03T16:20:59.751677" level="INFO">Selecting options from selection list 'xpath=//select[@data-testid="select-to-account"]' by value 5.</msg>
 <arg>${SOURCE_SELECT}</arg>
 <arg>${compte}</arg>
 <doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<status status="PASS" start="2026-03-03T16:14:44.913137" elapsed="0.127800"/>
+<status status="PASS" start="2026-03-03T16:20:59.751358" elapsed="0.080618"/>
 </kw>
 <arg>${DEST_SELECT}</arg>
 <arg>${compte}</arg>
-<status status="PASS" start="2026-03-03T16:14:44.912163" elapsed="0.129059"/>
+<status status="PASS" start="2026-03-03T16:20:59.750840" elapsed="0.081430"/>
 </kw>
 <arg>${compte}</arg>
 <doc>Sélectionne le compte de destination dans la liste des
 comptes</doc>
-<status status="PASS" start="2026-03-03T16:14:44.885479" elapsed="0.155933"/>
+<status status="PASS" start="2026-03-03T16:20:59.726849" elapsed="0.105607"/>
 </kw>
 <arg>5</arg>
 <doc>Sélectionner le compte du destinataire du virement</doc>
-<status status="PASS" start="2026-03-03T16:14:44.884681" elapsed="0.157076"/>
+<status status="PASS" start="2026-03-03T16:20:59.726162" elapsed="0.106437"/>
 </kw>
 <kw name="Saisir Montant" owner="virements_service">
 <kw name="Saisir Montant Dans Le Champ" owner="virements_page">
@@ -693,41 +667,41 @@ comptes</doc>
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:45.049952" elapsed="0.069206"/>
+<status status="PASS" start="2026-03-03T16:20:59.836239" elapsed="0.026729"/>
 </kw>
 <arg>${AMOUNT_INPUT}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:45.047083" elapsed="0.072381"/>
+<status status="PASS" start="2026-03-03T16:20:59.835729" elapsed="0.027486"/>
 </kw>
 <kw name="Saisir Le Texte" owner="socle">
 <kw name="Clear Element Text" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:45.121121" elapsed="0.184468"/>
+<status status="PASS" start="2026-03-03T16:20:59.864657" elapsed="0.048077"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:45.306033" elapsed="0.123507"/>
+<status status="PASS" start="2026-03-03T16:20:59.913137" elapsed="0.019418"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:45.430886" level="INFO">Typing text '50' into text field 'xpath=//input[@data-testid="input-amount"]'.</msg>
+<msg time="2026-03-03T16:20:59.934368" level="INFO">Typing text '50' into text field 'xpath=//input[@data-testid="input-amount"]'.</msg>
 <arg>${locator}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:45.430073" elapsed="0.249483"/>
+<status status="PASS" start="2026-03-03T16:20:59.933465" elapsed="0.097768"/>
 </kw>
 <arg>${AMOUNT_INPUT}</arg>
 <arg>${montant}</arg>
-<status status="PASS" start="2026-03-03T16:14:45.120055" elapsed="0.559762"/>
+<status status="PASS" start="2026-03-03T16:20:59.863774" elapsed="0.167704"/>
 </kw>
 <arg>${montant}</arg>
 <doc>Saisie du montant dans le champ prévu</doc>
-<status status="PASS" start="2026-03-03T16:14:45.045608" elapsed="0.634383"/>
+<status status="PASS" start="2026-03-03T16:20:59.834456" elapsed="0.197206"/>
 </kw>
 <arg>50</arg>
-<status status="PASS" start="2026-03-03T16:14:45.042526" elapsed="0.637620"/>
+<status status="PASS" start="2026-03-03T16:20:59.833255" elapsed="0.198582"/>
 </kw>
 <kw name="Valider Le Virement" owner="virements_service">
 <kw name="Valider Le Virement" owner="virements_page">
@@ -736,33 +710,33 @@ comptes</doc>
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:45.685530" elapsed="0.042054"/>
+<status status="PASS" start="2026-03-03T16:21:00.035576" elapsed="0.036383"/>
 </kw>
 <arg>${SUBMIT_BUTTON}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:45.684668" elapsed="0.043202"/>
+<status status="PASS" start="2026-03-03T16:21:00.034245" elapsed="0.038201"/>
 </kw>
 <kw name="Cliquer Sur L'Element" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:45.729370" elapsed="0.026144"/>
+<status status="PASS" start="2026-03-03T16:21:00.074433" elapsed="0.037464"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:45.756583" level="INFO">Clicking element 'xpath=//button[contains(.,'Effectuer le virement')]'.</msg>
+<msg time="2026-03-03T16:21:00.113467" level="INFO">Clicking element 'xpath=//button[contains(.,'Effectuer le virement')]'.</msg>
 <arg>${locator}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:45.756018" elapsed="0.157303"/>
+<status status="PASS" start="2026-03-03T16:21:00.112740" elapsed="0.188234"/>
 </kw>
 <arg>${SUBMIT_BUTTON}</arg>
-<status status="PASS" start="2026-03-03T16:14:45.728465" elapsed="0.186064"/>
+<status status="PASS" start="2026-03-03T16:21:00.073436" elapsed="0.227836"/>
 </kw>
 <doc>Cliquer sur Valider le payement</doc>
-<status status="PASS" start="2026-03-03T16:14:45.683955" elapsed="0.230801"/>
+<status status="PASS" start="2026-03-03T16:21:00.033380" elapsed="0.268084"/>
 </kw>
 <doc>Valider Le virement</doc>
-<status status="PASS" start="2026-03-03T16:14:45.682474" elapsed="0.232631"/>
+<status status="PASS" start="2026-03-03T16:21:00.032481" elapsed="0.269133"/>
 </kw>
 <kw name="Le Message De Confirmation Est Visible" owner="virements_service">
 <kw name="Obtenir La Présence Du Message De Confirmation" owner="virements_page">
@@ -771,224 +745,225 @@ comptes</doc>
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:45.922347" elapsed="0.096621"/>
+<status status="PASS" start="2026-03-03T16:21:00.310453" elapsed="0.088912"/>
 </kw>
 <arg>${SUCCESS_MESSAGE}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:45.921232" elapsed="0.100363"/>
+<status status="PASS" start="2026-03-03T16:21:00.304741" elapsed="0.094891"/>
 </kw>
 <doc>Obtenir la présence du message de confirmation</doc>
-<status status="PASS" start="2026-03-03T16:14:45.918371" elapsed="0.103477"/>
+<status status="PASS" start="2026-03-03T16:21:00.303489" elapsed="0.096321"/>
 </kw>
 <doc>Le message de succes s'affiche correctement</doc>
-<status status="PASS" start="2026-03-03T16:14:45.916598" elapsed="0.105433"/>
+<status status="PASS" start="2026-03-03T16:21:00.302246" elapsed="0.097705"/>
 </kw>
 <kw name="Logout" owner="auth_service">
 <kw name="Cliquer sur &quot;Déconnexion&quot;" owner="login_page">
 <kw name="L'Element Doit Etre Visible" owner="socle">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:46.095068" level="INFO">Element 'css=[data-testid="btn-logout"]' is displayed.</msg>
+<msg time="2026-03-03T16:21:00.449132" level="INFO">Element 'css=[data-testid="btn-logout"]' is displayed.</msg>
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.046608" elapsed="0.048730"/>
+<status status="PASS" start="2026-03-03T16:21:00.407487" elapsed="0.041983"/>
 </kw>
 <arg>${BTN_LOGOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:46.039220" elapsed="0.056552"/>
+<status status="PASS" start="2026-03-03T16:21:00.406500" elapsed="0.043251"/>
 </kw>
 <kw name="Cliquer Sur Le Bouton" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.097930" elapsed="0.044701"/>
+<status status="PASS" start="2026-03-03T16:21:00.452953" elapsed="0.056007"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:46.144051" level="INFO">Clicking button 'css=[data-testid="btn-logout"]'.</msg>
+<msg time="2026-03-03T16:21:00.510003" level="INFO">Clicking button 'css=[data-testid="btn-logout"]'.</msg>
 <arg>${locator}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.143289" elapsed="0.151868"/>
+<status status="PASS" start="2026-03-03T16:21:00.509457" elapsed="0.184969"/>
 </kw>
 <arg>${BTN_LOGOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:46.096786" elapsed="0.198691"/>
+<status status="PASS" start="2026-03-03T16:21:00.450570" elapsed="0.244195"/>
 </kw>
 <doc>Cliquer sur le bouton "déconnexion"</doc>
-<status status="PASS" start="2026-03-03T16:14:46.034401" elapsed="0.261312"/>
+<status status="PASS" start="2026-03-03T16:21:00.404979" elapsed="0.289983"/>
 </kw>
 <kw name="La Page &quot;Login&quot; Est Visible" owner="login_page">
 <kw name="L'Element Doit Etre Visible" owner="socle">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:46.342112" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
+<msg time="2026-03-03T16:21:00.734849" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.299486" elapsed="0.042859"/>
+<status status="PASS" start="2026-03-03T16:21:00.697142" elapsed="0.037893"/>
 </kw>
 <arg>${LOGIN_EMAIL}</arg>
-<status status="PASS" start="2026-03-03T16:14:46.298361" elapsed="0.044213"/>
+<status status="PASS" start="2026-03-03T16:21:00.696320" elapsed="0.038959"/>
 </kw>
 <doc>La page de login doit petre visible</doc>
-<status status="PASS" start="2026-03-03T16:14:46.296245" elapsed="0.046527"/>
+<status status="PASS" start="2026-03-03T16:21:00.695440" elapsed="0.040020"/>
 </kw>
 <doc>Déconnexion et retour à la page login</doc>
-<status status="PASS" start="2026-03-03T16:14:46.026347" elapsed="0.316577"/>
+<status status="PASS" start="2026-03-03T16:21:00.400875" elapsed="0.334719"/>
 </kw>
 <doc>Vérifie qu’un virement interne entre Compte Courant et Livret A fonctionne</doc>
 <tag>regression</tag>
+<tag>smoke</tag>
 <tag>virements</tag>
-<status status="PASS" start="2026-03-03T16:14:42.557736" elapsed="3.785925"/>
+<status status="PASS" start="2026-03-03T16:20:57.656117" elapsed="3.079935"/>
 </test>
-<test id="s1-s1-t3" name="Virement Refuse Si Montant Invalide" line="36">
+<test id="s1-s1-t3" name="Virement Refuse Si Montant Invalide" line="35">
 <kw name="Obtenir Les Identifiants Standards" owner="auth_service">
 <kw name="Get Standard Credentials" owner="testdata">
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:46.351002" level="INFO">${users} = {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': True, 'two...</msg>
+<msg time="2026-03-03T16:21:00.740899" level="INFO">${users} = {'standard': {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}, 'twofa': {'email': 'marie.martin@email.com', 'password': 'SecurePass456!', 'two_fa_enabled': True, 'two...</msg>
 <var>${users}</var>
 <arg>${TESTDATA}</arg>
 <arg>users</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.348040" elapsed="0.003074"/>
+<status status="PASS" start="2026-03-03T16:21:00.740221" elapsed="0.000775"/>
 </kw>
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:46.352162" level="INFO">${standard} = {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}</msg>
+<msg time="2026-03-03T16:21:00.742055" level="INFO">${standard} = {'email': 'test@digitalbank.fr', 'password': 'Test1234!', 'two_fa_enabled': False}</msg>
 <var>${standard}</var>
 <arg>${users}</arg>
 <arg>standard</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.351532" elapsed="0.002201"/>
+<status status="PASS" start="2026-03-03T16:21:00.741451" elapsed="0.000690"/>
 </kw>
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:46.355017" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-03T16:21:00.746039" level="INFO">${email} = test@digitalbank.fr</msg>
 <var>${email}</var>
 <arg>${standard}</arg>
 <arg>email</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.354269" elapsed="0.000853"/>
+<status status="PASS" start="2026-03-03T16:21:00.742557" elapsed="0.003578"/>
 </kw>
 <kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-03-03T16:14:46.356374" level="INFO">${password} = Test1234!</msg>
+<msg time="2026-03-03T16:21:00.750764" level="INFO">${password} = Test1234!</msg>
 <var>${password}</var>
 <arg>${standard}</arg>
 <arg>password</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.355587" elapsed="0.000901"/>
+<status status="PASS" start="2026-03-03T16:21:00.750037" elapsed="0.000811"/>
 </kw>
 <return>
 <value>${email}</value>
 <value>${password}</value>
-<status status="PASS" start="2026-03-03T16:14:46.356691" elapsed="0.000221"/>
+<status status="PASS" start="2026-03-03T16:21:00.751029" elapsed="0.000103"/>
 </return>
-<msg time="2026-03-03T16:14:46.357676" level="INFO">${email} = test@digitalbank.fr</msg>
-<msg time="2026-03-03T16:14:46.357852" level="INFO">${password} = Test1234!</msg>
+<msg time="2026-03-03T16:21:00.751583" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-03T16:21:00.751691" level="INFO">${password} = Test1234!</msg>
 <var>${email}</var>
 <var>${password}</var>
-<status status="PASS" start="2026-03-03T16:14:46.347280" elapsed="0.010652"/>
+<status status="PASS" start="2026-03-03T16:21:00.739209" elapsed="0.015577"/>
 </kw>
 <return>
 <value>${email}</value>
 <value>${password}</value>
-<status status="PASS" start="2026-03-03T16:14:46.358100" elapsed="0.000107"/>
+<status status="PASS" start="2026-03-03T16:21:00.755002" elapsed="0.000109"/>
 </return>
-<msg time="2026-03-03T16:14:46.359338" level="INFO">${email} = test@digitalbank.fr</msg>
-<msg time="2026-03-03T16:14:46.359871" level="INFO">${password} = Test1234!</msg>
+<msg time="2026-03-03T16:21:00.755593" level="INFO">${email} = test@digitalbank.fr</msg>
+<msg time="2026-03-03T16:21:00.755731" level="INFO">${password} = Test1234!</msg>
 <var>${email}</var>
 <var>${password}</var>
 <doc>Obtenir les identifiants standards</doc>
-<status status="PASS" start="2026-03-03T16:14:46.346165" elapsed="0.014131"/>
+<status status="PASS" start="2026-03-03T16:21:00.738207" elapsed="0.017588"/>
 </kw>
 <kw name="Login Avec Identifiants" owner="auth_service">
 <kw name="La Page &quot;Login&quot; Est Visible" owner="login_page">
 <kw name="L'Element Doit Etre Visible" owner="socle">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:46.386057" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
+<msg time="2026-03-03T16:21:00.782688" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.366602" elapsed="0.019626"/>
+<status status="PASS" start="2026-03-03T16:21:00.761315" elapsed="0.021536"/>
 </kw>
 <arg>${LOGIN_EMAIL}</arg>
-<status status="PASS" start="2026-03-03T16:14:46.365561" elapsed="0.020897"/>
+<status status="PASS" start="2026-03-03T16:21:00.760432" elapsed="0.022581"/>
 </kw>
 <doc>La page de login doit petre visible</doc>
-<status status="PASS" start="2026-03-03T16:14:46.364557" elapsed="0.022062"/>
+<status status="PASS" start="2026-03-03T16:21:00.759657" elapsed="0.023453"/>
 </kw>
 <kw name="Saisir Email" owner="login_page">
 <kw name="Saisir Le Texte" owner="socle">
 <kw name="Clear Element Text" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.389436" elapsed="0.043987"/>
+<status status="PASS" start="2026-03-03T16:21:00.784875" elapsed="0.079029"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.433841" elapsed="0.019307"/>
+<status status="PASS" start="2026-03-03T16:21:00.864374" elapsed="0.024539"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:46.454109" level="INFO">Typing text 'test@digitalbank.fr' into text field 'css=[data-testid="input-email"]'.</msg>
+<msg time="2026-03-03T16:21:00.890001" level="INFO">Typing text 'test@digitalbank.fr' into text field 'css=[data-testid="input-email"]'.</msg>
 <arg>${locator}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.453558" elapsed="0.204603"/>
+<status status="PASS" start="2026-03-03T16:21:00.889368" elapsed="0.221752"/>
 </kw>
 <arg>${LOGIN_EMAIL}</arg>
 <arg>${email}</arg>
-<status status="PASS" start="2026-03-03T16:14:46.388713" elapsed="0.269761"/>
+<status status="PASS" start="2026-03-03T16:21:00.784109" elapsed="0.329685"/>
 </kw>
 <arg>${email}</arg>
 <doc>Saisir l'email</doc>
-<status status="PASS" start="2026-03-03T16:14:46.387095" elapsed="0.271578"/>
+<status status="PASS" start="2026-03-03T16:21:00.783448" elapsed="0.330722"/>
 </kw>
 <kw name="Saisir Mot De Passe" owner="login_page">
 <kw name="Saisir Le Mot De Passe" owner="socle">
 <kw name="Clear Element Text" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.661925" elapsed="0.077554"/>
+<status status="PASS" start="2026-03-03T16:21:01.118094" elapsed="0.082349"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.739929" elapsed="0.031760"/>
+<status status="PASS" start="2026-03-03T16:21:01.200927" elapsed="0.031155"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:46.773000" level="INFO">Typing password into text field 'css=[data-testid="input-password"]'.</msg>
-<msg time="2026-03-03T16:14:46.857231" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2026-03-03T16:21:01.233884" level="INFO">Typing password into text field 'css=[data-testid="input-password"]'.</msg>
+<msg time="2026-03-03T16:21:01.304007" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>${locator}</arg>
 <arg>${pswd}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.772253" elapsed="0.209935"/>
+<status status="PASS" start="2026-03-03T16:21:01.232970" elapsed="0.207832"/>
 </kw>
 <arg>${LOGIN_PASSWORD}</arg>
 <arg>${password}</arg>
-<status status="PASS" start="2026-03-03T16:14:46.660371" elapsed="0.322154"/>
+<status status="PASS" start="2026-03-03T16:21:01.117035" elapsed="0.324938"/>
 </kw>
 <kw name="Cliquer Sur Le Bouton" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:46.987447" elapsed="0.041057"/>
+<status status="PASS" start="2026-03-03T16:21:01.444033" elapsed="0.043710"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:47.029884" level="INFO">Clicking button 'css=[data-testid="btn-login"]'.</msg>
+<msg time="2026-03-03T16:21:01.488840" level="INFO">Clicking button 'css=[data-testid="btn-login"]'.</msg>
 <arg>${locator}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:47.029269" elapsed="0.177711"/>
+<status status="PASS" start="2026-03-03T16:21:01.488212" elapsed="0.189877"/>
 </kw>
 <arg>${LOGIN_SUBMIT}</arg>
-<status status="PASS" start="2026-03-03T16:14:46.983621" elapsed="0.223611"/>
+<status status="PASS" start="2026-03-03T16:21:01.442912" elapsed="0.235418"/>
 </kw>
 <arg>${password}</arg>
 <doc>Saisir le mot de passe</doc>
-<status status="PASS" start="2026-03-03T16:14:46.659230" elapsed="0.549020"/>
+<status status="PASS" start="2026-03-03T16:21:01.115689" elapsed="0.562795"/>
 </kw>
 <arg>${email}</arg>
 <arg>${password}</arg>
 <doc>Saisit les identifiants et soumet le formulaire de login</doc>
-<status status="PASS" start="2026-03-03T16:14:46.362919" elapsed="0.846959"/>
+<status status="PASS" start="2026-03-03T16:21:00.756516" elapsed="0.922108"/>
 </kw>
 <kw name="Se Rendre Sur La Page Des Virements" owner="virements_service">
 <kw name="Ouvrir L'Onglet Virements" owner="virements_page">
@@ -997,52 +972,52 @@ comptes</doc>
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:47.221281" elapsed="0.035540"/>
+<status status="PASS" start="2026-03-03T16:21:01.682482" elapsed="0.035404"/>
 </kw>
 <arg>${NAV_VIREMENTS}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:47.216535" elapsed="0.040545"/>
+<status status="PASS" start="2026-03-03T16:21:01.681463" elapsed="0.036681"/>
 </kw>
 <kw name="Scroller En Haut De La Page" owner="socle">
 <kw name="Press Keys" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:47.259141" level="INFO">Sending key(s) ('HOME',) to page.</msg>
-<msg time="2026-03-03T16:14:47.259329" level="INFO">Pressing special key HOME to browser.</msg>
-<msg time="2026-03-03T16:14:47.259432" level="INFO">Releasing special key HOME.</msg>
+<msg time="2026-03-03T16:21:01.721492" level="INFO">Sending key(s) ('HOME',) to page.</msg>
+<msg time="2026-03-03T16:21:01.721693" level="INFO">Pressing special key HOME to browser.</msg>
+<msg time="2026-03-03T16:21:01.721849" level="INFO">Releasing special key HOME.</msg>
 <arg>None</arg>
 <arg>HOME</arg>
 <doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<status status="PASS" start="2026-03-03T16:14:47.258391" elapsed="0.013226"/>
+<status status="PASS" start="2026-03-03T16:21:01.720285" elapsed="0.015734"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-03-03T16:14:48.272964" level="INFO">Slept 1 second.</msg>
+<msg time="2026-03-03T16:21:02.737398" level="INFO">Slept 1 second.</msg>
 <arg>1s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-03-03T16:14:47.272067" elapsed="1.001159"/>
+<status status="PASS" start="2026-03-03T16:21:01.736496" elapsed="1.001154"/>
 </kw>
 <doc>Scroller en haut de la page</doc>
-<status status="PASS" start="2026-03-03T16:14:47.257589" elapsed="1.015866"/>
+<status status="PASS" start="2026-03-03T16:21:01.718648" elapsed="1.019270"/>
 </kw>
 <kw name="Cliquer Sur L'Element" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:48.275401" elapsed="0.031317"/>
+<status status="PASS" start="2026-03-03T16:21:02.739587" elapsed="0.019693"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:48.310755" level="INFO">Clicking element 'xpath=//button[@data-testid="tab-transfer"]'.</msg>
+<msg time="2026-03-03T16:21:02.760392" level="INFO">Clicking element 'xpath=//button[@data-testid="tab-transfer"]'.</msg>
 <arg>${locator}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:48.307161" elapsed="0.274590"/>
+<status status="PASS" start="2026-03-03T16:21:02.759866" elapsed="0.082801"/>
 </kw>
 <arg>${NAV_VIREMENTS}</arg>
-<status status="PASS" start="2026-03-03T16:14:48.274178" elapsed="0.308003"/>
+<status status="PASS" start="2026-03-03T16:21:02.738622" elapsed="0.104333"/>
 </kw>
 <doc>Ouvre l'onglet Virements depuis le menu principal</doc>
-<status status="PASS" start="2026-03-03T16:14:47.215095" elapsed="1.367308"/>
+<status status="PASS" start="2026-03-03T16:21:01.680428" elapsed="1.162692"/>
 </kw>
 <doc>Ouvre l'onglet Virements</doc>
-<status status="PASS" start="2026-03-03T16:14:47.211739" elapsed="1.370824"/>
+<status status="PASS" start="2026-03-03T16:21:01.679526" elapsed="1.163736"/>
 </kw>
 <kw name="Selectionner Compte Source" owner="virements_service">
 <kw name="Selectionner Compte Source Dans La Liste" owner="virements_page">
@@ -1051,31 +1026,31 @@ comptes</doc>
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:48.588896" elapsed="0.056127"/>
+<status status="PASS" start="2026-03-03T16:21:02.848206" elapsed="0.021927"/>
 </kw>
 <arg>${SOURCE_SELECT}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:48.587937" elapsed="0.057338"/>
+<status status="PASS" start="2026-03-03T16:21:02.846224" elapsed="0.024189"/>
 </kw>
 <kw name="Selectionner Depuis Liste Par Valeur" owner="socle">
 <kw name="Select From List By Value" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:48.650805" level="INFO">Selecting options from selection list 'xpath=//select[@data-testid="select-from-account"]' by value 4.</msg>
+<msg time="2026-03-03T16:21:02.873623" level="INFO">Selecting options from selection list 'xpath=//select[@data-testid="select-from-account"]' by value 4.</msg>
 <arg>${SOURCE_SELECT}</arg>
 <arg>${compte}</arg>
 <doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<status status="PASS" start="2026-03-03T16:14:48.649460" elapsed="0.085838"/>
+<status status="PASS" start="2026-03-03T16:21:02.872398" elapsed="0.050149"/>
 </kw>
 <arg>${SOURCE_SELECT}</arg>
 <arg>${compte}</arg>
-<status status="PASS" start="2026-03-03T16:14:48.645784" elapsed="0.090908"/>
+<status status="PASS" start="2026-03-03T16:21:02.870923" elapsed="0.051930"/>
 </kw>
 <arg>${compte}</arg>
 <doc>Séléectionne le compte source dans la liste des comptes</doc>
-<status status="PASS" start="2026-03-03T16:14:48.587022" elapsed="0.149939"/>
+<status status="PASS" start="2026-03-03T16:21:02.845196" elapsed="0.077834"/>
 </kw>
 <arg>4</arg>
 <doc>Sélectionner le compte source du virement</doc>
-<status status="PASS" start="2026-03-03T16:14:48.586029" elapsed="0.151128"/>
+<status status="PASS" start="2026-03-03T16:21:02.843921" elapsed="0.079266"/>
 </kw>
 <kw name="Selectionner Compte Destination" owner="virements_service">
 <kw name="Selectionner Compte Destinataire Dans La Liste" owner="virements_page">
@@ -1084,32 +1059,32 @@ comptes</doc>
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:48.741815" elapsed="0.033621"/>
+<status status="PASS" start="2026-03-03T16:21:02.925514" elapsed="0.020310"/>
 </kw>
 <arg>${DEST_SELECT}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:48.740674" elapsed="0.035088"/>
+<status status="PASS" start="2026-03-03T16:21:02.925014" elapsed="0.021042"/>
 </kw>
 <kw name="Selectionner Depuis Liste Par Valeur" owner="socle">
 <kw name="Select From List By Value" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:48.779300" level="INFO">Selecting options from selection list 'xpath=//select[@data-testid="select-to-account"]' by value 5.</msg>
+<msg time="2026-03-03T16:21:02.947989" level="INFO">Selecting options from selection list 'xpath=//select[@data-testid="select-to-account"]' by value 5.</msg>
 <arg>${SOURCE_SELECT}</arg>
 <arg>${compte}</arg>
 <doc>Selects options from selection list ``locator`` by ``values``.</doc>
-<status status="PASS" start="2026-03-03T16:14:48.777927" elapsed="0.135855"/>
+<status status="PASS" start="2026-03-03T16:21:02.947335" elapsed="0.121127"/>
 </kw>
 <arg>${DEST_SELECT}</arg>
 <arg>${compte}</arg>
-<status status="PASS" start="2026-03-03T16:14:48.776619" elapsed="0.137470"/>
+<status status="PASS" start="2026-03-03T16:21:02.946529" elapsed="0.122255"/>
 </kw>
 <arg>${compte}</arg>
 <doc>Sélectionne le compte de destination dans la liste des
 comptes</doc>
-<status status="PASS" start="2026-03-03T16:14:48.738912" elapsed="0.175372"/>
+<status status="PASS" start="2026-03-03T16:21:02.924482" elapsed="0.144581"/>
 </kw>
 <arg>5</arg>
 <doc>Sélectionner le compte du destinataire du virement</doc>
-<status status="PASS" start="2026-03-03T16:14:48.737847" elapsed="0.177356"/>
+<status status="PASS" start="2026-03-03T16:21:02.923895" elapsed="0.145370"/>
 </kw>
 <kw name="Saisir Montant" owner="virements_service">
 <kw name="Saisir Montant Dans Le Champ" owner="virements_page">
@@ -1118,41 +1093,41 @@ comptes</doc>
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:48.926902" elapsed="0.039478"/>
+<status status="PASS" start="2026-03-03T16:21:03.074965" elapsed="0.030111"/>
 </kw>
 <arg>${AMOUNT_INPUT}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:48.925855" elapsed="0.040771"/>
+<status status="PASS" start="2026-03-03T16:21:03.073676" elapsed="0.031662"/>
 </kw>
 <kw name="Saisir Le Texte" owner="socle">
 <kw name="Clear Element Text" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <doc>Clears the value of the text-input-element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:48.967685" elapsed="0.103391"/>
+<status status="PASS" start="2026-03-03T16:21:03.107034" elapsed="0.158350"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:49.073445" elapsed="0.043840"/>
+<status status="PASS" start="2026-03-03T16:21:03.266419" elapsed="0.087042"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:49.118896" level="INFO">Typing text '0' into text field 'xpath=//input[@data-testid="input-amount"]'.</msg>
+<msg time="2026-03-03T16:21:03.354958" level="INFO">Typing text '0' into text field 'xpath=//input[@data-testid="input-amount"]'.</msg>
 <arg>${locator}</arg>
 <arg>${text}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:49.117942" elapsed="0.187107"/>
+<status status="PASS" start="2026-03-03T16:21:03.354272" elapsed="0.168690"/>
 </kw>
 <arg>${AMOUNT_INPUT}</arg>
 <arg>${montant}</arg>
-<status status="PASS" start="2026-03-03T16:14:48.967044" elapsed="0.338318"/>
+<status status="PASS" start="2026-03-03T16:21:03.105984" elapsed="0.417260"/>
 </kw>
 <arg>${montant}</arg>
 <doc>Saisie du montant dans le champ prévu</doc>
-<status status="PASS" start="2026-03-03T16:14:48.917961" elapsed="0.387597"/>
+<status status="PASS" start="2026-03-03T16:21:03.072061" elapsed="0.451485"/>
 </kw>
 <arg>0</arg>
-<status status="PASS" start="2026-03-03T16:14:48.916745" elapsed="0.389076"/>
+<status status="PASS" start="2026-03-03T16:21:03.069959" elapsed="0.453790"/>
 </kw>
 <kw name="Valider Le Virement" owner="virements_service">
 <kw name="Valider Le Virement" owner="virements_page">
@@ -1161,33 +1136,33 @@ comptes</doc>
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:49.311263" elapsed="0.026394"/>
+<status status="PASS" start="2026-03-03T16:21:03.528721" elapsed="0.042089"/>
 </kw>
 <arg>${SUBMIT_BUTTON}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:49.310075" elapsed="0.027948"/>
+<status status="PASS" start="2026-03-03T16:21:03.527710" elapsed="0.043439"/>
 </kw>
 <kw name="Cliquer Sur L'Element" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:49.339785" elapsed="0.020537"/>
+<status status="PASS" start="2026-03-03T16:21:03.575751" elapsed="0.035447"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:49.361545" level="INFO">Clicking element 'xpath=//button[contains(.,'Effectuer le virement')]'.</msg>
+<msg time="2026-03-03T16:21:03.612510" level="INFO">Clicking element 'xpath=//button[contains(.,'Effectuer le virement')]'.</msg>
 <arg>${locator}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:49.360957" elapsed="0.139879"/>
+<status status="PASS" start="2026-03-03T16:21:03.611774" elapsed="0.130570"/>
 </kw>
 <arg>${SUBMIT_BUTTON}</arg>
-<status status="PASS" start="2026-03-03T16:14:49.338577" elapsed="0.165187"/>
+<status status="PASS" start="2026-03-03T16:21:03.571890" elapsed="0.170712"/>
 </kw>
 <doc>Cliquer sur Valider le payement</doc>
-<status status="PASS" start="2026-03-03T16:14:49.308533" elapsed="0.195533"/>
+<status status="PASS" start="2026-03-03T16:21:03.526424" elapsed="0.217149"/>
 </kw>
 <doc>Valider Le virement</doc>
-<status status="PASS" start="2026-03-03T16:14:49.306745" elapsed="0.197523"/>
+<status status="PASS" start="2026-03-03T16:21:03.525044" elapsed="0.218814"/>
 </kw>
 <kw name="Le Message D'Erreur Est Visible" owner="virements_service">
 <kw name="Le Virement N'Est Pas Effectué" owner="virements_page">
@@ -1196,89 +1171,89 @@ comptes</doc>
 <arg>${locator}</arg>
 <arg>${timeout}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:49.512903" elapsed="0.078430"/>
+<status status="PASS" start="2026-03-03T16:21:03.755535" elapsed="0.073327"/>
 </kw>
 <arg>${ERROR_MESSAGE}</arg>
 <arg>${TIMEOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:49.511594" elapsed="0.079983"/>
+<status status="PASS" start="2026-03-03T16:21:03.751885" elapsed="0.077662"/>
 </kw>
 <doc>Obtenir la présence du message d'erreur du virement</doc>
-<status status="PASS" start="2026-03-03T16:14:49.510443" elapsed="0.081307"/>
+<status status="PASS" start="2026-03-03T16:21:03.748243" elapsed="0.081594"/>
 </kw>
 <doc>Le message d'erreur s'affiche correctement</doc>
-<status status="PASS" start="2026-03-03T16:14:49.504980" elapsed="0.086905"/>
+<status status="PASS" start="2026-03-03T16:21:03.745577" elapsed="0.084457"/>
 </kw>
 <kw name="Logout" owner="auth_service">
 <kw name="Cliquer sur &quot;Déconnexion&quot;" owner="login_page">
 <kw name="L'Element Doit Etre Visible" owner="socle">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:49.697241" level="INFO">Element 'css=[data-testid="btn-logout"]' is displayed.</msg>
+<msg time="2026-03-03T16:21:03.882898" level="INFO">Element 'css=[data-testid="btn-logout"]' is displayed.</msg>
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:49.609056" elapsed="0.088440"/>
+<status status="PASS" start="2026-03-03T16:21:03.839395" elapsed="0.043703"/>
 </kw>
 <arg>${BTN_LOGOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:49.603788" elapsed="0.093945"/>
+<status status="PASS" start="2026-03-03T16:21:03.838134" elapsed="0.045233"/>
 </kw>
 <kw name="Cliquer Sur Le Bouton" owner="socle">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:49.702568" elapsed="0.057493"/>
+<status status="PASS" start="2026-03-03T16:21:03.884839" elapsed="0.058762"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:49.761589" level="INFO">Clicking button 'css=[data-testid="btn-logout"]'.</msg>
+<msg time="2026-03-03T16:21:03.944956" level="INFO">Clicking button 'css=[data-testid="btn-logout"]'.</msg>
 <arg>${locator}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-03-03T16:14:49.760585" elapsed="0.262746"/>
+<status status="PASS" start="2026-03-03T16:21:03.944123" elapsed="0.463295"/>
 </kw>
 <arg>${BTN_LOGOUT}</arg>
-<status status="PASS" start="2026-03-03T16:14:49.698374" elapsed="0.325218"/>
+<status status="PASS" start="2026-03-03T16:21:03.883912" elapsed="0.524475"/>
 </kw>
 <doc>Cliquer sur le bouton "déconnexion"</doc>
-<status status="PASS" start="2026-03-03T16:14:49.593345" elapsed="0.430542"/>
+<status status="PASS" start="2026-03-03T16:21:03.833494" elapsed="0.575402"/>
 </kw>
 <kw name="La Page &quot;Login&quot; Est Visible" owner="login_page">
 <kw name="L'Element Doit Etre Visible" owner="socle">
 <kw name="Element Should Be Visible" owner="SeleniumLibrary">
-<msg time="2026-03-03T16:14:50.058717" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
+<msg time="2026-03-03T16:21:04.535065" level="INFO">Element 'css=[data-testid="input-email"]' is displayed.</msg>
 <arg>${locator}</arg>
 <arg>${TIMEOUT}</arg>
 <doc>Verifies that the element identified by ``locator`` is visible.</doc>
-<status status="PASS" start="2026-03-03T16:14:50.026348" elapsed="0.032593"/>
+<status status="PASS" start="2026-03-03T16:21:04.416755" elapsed="0.118527"/>
 </kw>
 <arg>${LOGIN_EMAIL}</arg>
-<status status="PASS" start="2026-03-03T16:14:50.025412" elapsed="0.033796"/>
+<status status="PASS" start="2026-03-03T16:21:04.413593" elapsed="0.123452"/>
 </kw>
 <doc>La page de login doit petre visible</doc>
-<status status="PASS" start="2026-03-03T16:14:50.024443" elapsed="0.035014"/>
+<status status="PASS" start="2026-03-03T16:21:04.409506" elapsed="0.127860"/>
 </kw>
 <doc>Déconnexion et retour à la page login</doc>
-<status status="PASS" start="2026-03-03T16:14:49.592492" elapsed="0.467173"/>
+<status status="PASS" start="2026-03-03T16:21:03.831949" elapsed="0.705613"/>
 </kw>
 <doc>Vérifie qu’un montant nul déclenche une erreur</doc>
 <tag>regression</tag>
 <tag>virements</tag>
-<status status="PASS" start="2026-03-03T16:14:46.344279" elapsed="3.715944"/>
+<status status="PASS" start="2026-03-03T16:21:00.736769" elapsed="3.806612"/>
 </test>
 <kw name="Fermer L'Application" owner="auth_service" type="TEARDOWN">
 <kw name="Fermer Les Navigateurs" owner="socle">
 <kw name="Close All Browsers" owner="SeleniumLibrary">
 <doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" start="2026-03-03T16:14:50.066945" elapsed="0.095729"/>
+<status status="PASS" start="2026-03-03T16:21:04.553768" elapsed="0.168959"/>
 </kw>
 <doc>Ferme tous ls navigateurs</doc>
-<status status="PASS" start="2026-03-03T16:14:50.065534" elapsed="0.097595"/>
+<status status="PASS" start="2026-03-03T16:21:04.553089" elapsed="0.174392"/>
 </kw>
 <doc>Ferme proprement le navigateur.</doc>
-<status status="PASS" start="2026-03-03T16:14:50.064577" elapsed="0.098763"/>
+<status status="PASS" start="2026-03-03T16:21:04.545035" elapsed="0.184150"/>
 </kw>
 <doc>Fonctionnalité testée : Virements internes</doc>
-<status status="PASS" start="2026-03-03T16:14:36.428772" elapsed="13.734691"/>
+<status status="PASS" start="2026-03-03T16:20:52.453951" elapsed="12.275415"/>
 </suite>
-<status status="PASS" start="2026-03-03T16:14:36.320510" elapsed="13.850788"/>
+<status status="PASS" start="2026-03-03T16:20:52.352071" elapsed="12.387380"/>
 </suite>
 <statistics>
 <total>
@@ -1286,7 +1261,7 @@ comptes</doc>
 </total>
 <tag>
 <stat pass="2" fail="0" skip="0">regression</stat>
-<stat pass="1" fail="0" skip="0">smoke</stat>
+<stat pass="2" fail="0" skip="0">smoke</stat>
 <stat pass="3" fail="0" skip="0">virements</stat>
 </tag>
 <suite>
