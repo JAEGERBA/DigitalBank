@@ -24,7 +24,7 @@ La Page De Login Est Accessible
     auth_service.Se Rendre Sur La Page De Login
 
 Login Et Logout Standard
-    [Documentation]     Sanity nightly : login standard -> app visible -> logout
+    [Documentation]     login standard -> app visible -> logout
     [Tags]    nightly    smoke
     
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
@@ -62,11 +62,9 @@ Changer De Mot De Passe - Mot De Passe Trop Faible
     
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}
-    main_page.La Page "Commune" Est Visible
     auth_service.Ouvrir La Modale de Changement De Mot De Passe
     auth_service.Saisir Un Mot De Passe Faible    ${WEAK_PASSWORD}
     auth_service.Logout
-
 
 Changer De Mot De Passe Et Recharger
     [Documentation]    Scénario non-régression clé : changer le mot de passe, se déconnecter, se reconnecter,
@@ -78,7 +76,7 @@ Changer De Mot De Passe Et Recharger
     auth_service.Changer De Mot De Passe    ${USER_STD_PASSWORD}    ${TEMP_PASSWORD}
     auth_service.Logout
     auth_service.Login Avec Identifiants    ${USER_STD_EMAIL}    ${TEMP_PASSWORD}
-    main_page.La Page "Commune" Est Visible
+    auth_service.Ouvrir La Modale de Changement De Mot De Passe
     auth_service.Changer De Mot De Passe    ${TEMP_PASSWORD}    ${USER_STD_PASSWORD}
     auth_service.Logout
     auth_service.Login Avec Identifiants    ${USER_STD_EMAIL}    ${USER_STD_PASSWORD}

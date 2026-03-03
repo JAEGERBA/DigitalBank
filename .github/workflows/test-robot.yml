@@ -114,6 +114,7 @@ jobs:
       #     robot --nostatusrc -d results -i $TAG -v BASE_URL:http://localhost:8080 -v HEADLESS:true tests
       - name: Run tests
         run: |
+          echo "event_name=${{ github.event_name }}"
           TEST_DIR=tests/e2e
           TAG=nightly
 
