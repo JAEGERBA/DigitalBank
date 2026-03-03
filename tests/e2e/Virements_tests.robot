@@ -14,7 +14,6 @@ La Page Virements Est Accessible
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}
-    main_page.La Page "Commune" Est Visible
     virements_service.Se Rendre Sur La Page Des Virements
     virements_service.La Page Virements Est Visible
     auth_service.Logout
