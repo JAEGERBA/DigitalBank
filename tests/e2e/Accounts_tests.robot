@@ -4,8 +4,8 @@ Resource          ../resources/services/auth_service.resource
 Resource          ../resources/services/accounts_service.resource
 Resource          ../resources/services/navigation_service.resource
 
-Suite Setup       Ouvrir L'Application
-Suite Teardown    Fermer L'Application
+Test Setup       Ouvrir L'Application
+Test Teardown    Fermer L'Application
 
 
 *** Test Cases ***

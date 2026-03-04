@@ -3,10 +3,8 @@ Documentation    Fonctionnalité testée : Authentification et connexion
 
 Resource         ../resources/services/auth_service.resource
 
-Suite Setup       Ouvrir L'Application
-Suite Teardown    Fermer L'Application
-
-Test Setup    Se Rendre Sur La Page De Login
+Test Setup       Ouvrir L'Application
+Test Teardown    Fermer L'Application
 
 
 *** Variables ***
@@ -15,17 +13,17 @@ ${WRONG_PASSWORD}    WrongPass123!
 ${WRONG_2FA_CODE}    000000
 ${WEAK_PASSWORD}     1234
 
-*** Test Cases ***
 
+*** Test Cases ***
 La Page De Login Est Accessible
     [Documentation]    Vérifie que l'application est accessible et que la page Login s'affiche
-    [Tags]    smoke
+    [Tags]    smoke    auth
     
     auth_service.Se Rendre Sur La Page De Login
 
 Login Et Logout Standard
     [Documentation]     login standard -> app visible -> logout
-    [Tags]    nightly    smoke
+    [Tags]    nightly    smoke    auth
     
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}
@@ -34,7 +32,7 @@ Login Et Logout Standard
 
 Login Et Logout 2FA
     [Documentation]    Connexion avec 2FA -> dashboard visible -> déconnexion -> retour login
-    [Tags]    nightly    smoke
+    [Tags]    nightly    smoke    auth
 
     auth_service.Login Avec Identifiants    ${USER_2FA_EMAIL}    ${USER_2FA_PASSWORD}
     auth_service.Se connecter 2FA
@@ -42,14 +40,14 @@ Login Et Logout 2FA
 
 Login Invalid Avec Affichage De L'Erreur
     [Documentation]     Vérifie qu’un mot de passe invalide déclenche un message d’erreur
-    [Tags]    nightly    
+    [Tags]    nightly        auth
     
     auth_service.Login Avec Identifiants    ${USER_STD_EMAIL}    ${WRONG_PASSWORD}
     auth_service.Le Message D'Erreur S'Affiche    ${LOGIN_ERROR}
 
 Mauvais Code Pour 2FA Affiche Une Erreur
     [Documentation]     Vérifie qu’un mauvais code 2FA affiche un message d’erreur
-    [Tags]    nightly    smoke
+    [Tags]    nightly    smoke    auth
     
     auth_service.Login Avec Identifiants    ${USER_2FA_EMAIL}    ${USER_2FA_PASSWORD}
     2FA_page.La Page "2FA" Est Visible
@@ -58,7 +56,7 @@ Mauvais Code Pour 2FA Affiche Une Erreur
 
 Changer De Mot De Passe - Mot De Passe Trop Faible
     [Documentation]     Vérifie la validation du formulaire de changement de mot de passe (sans modifier le mot de passe)
-    [Tags]    nightly   smoke    MDP
+    [Tags]    nightly   smoke    MDP    auth
     
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}
@@ -69,7 +67,7 @@ Changer De Mot De Passe - Mot De Passe Trop Faible
 Changer De Mot De Passe Et Recharger
     [Documentation]    Scénario non-régression clé : changer le mot de passe, se déconnecter, se reconnecter,
     ...                puis remettre le mot de passe initial pour rendre le test rejouable.
-    [Tags]    regression    MDP
+    [Tags]    regression    MDP    auth
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}

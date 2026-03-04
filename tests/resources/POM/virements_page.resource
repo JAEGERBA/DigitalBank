@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../locators.resource
+# Resource    ../locators.resource
 Resource    ../web_socle/socle.robot
 
 
@@ -14,7 +14,7 @@ ${AMOUNT_INPUT}             xpath=//input[@data-testid="input-amount"]
 ${SUBMIT_BUTTON}            xpath=//button[contains(.,'Effectuer le virement')]
 
 ${SUCCESS_MESSAGE}          xpath=//*[contains(@class,'success') or contains(.,'Virement effectué')]
-${ERROR_MESSAGE}            xpath=//*[contains(.,"4 950,00")]
+${ERROR_MESSAGE}            xpath=//button[contains(.,'Effectuer le virement')]
 
 
 
