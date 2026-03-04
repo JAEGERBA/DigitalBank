@@ -29,8 +29,6 @@ La liste des factures en attente doit être visible
     [Documentation]    Vérifie que la liste des factures en attente est visible
     L'Element Doit Etre Visible    ${liste_factures_en_attente_locator}
 
-*** Keywords ***
-
 Cliquer sur Payer pour la facture
     [Documentation]    Clique sur le bouton "Payer" pour une facture donnée (ex: 1,2,3...).
     [Arguments]    ${bill_id}
