@@ -7,13 +7,6 @@ Test Setup       Ouvrir L'Application
 Test Teardown    Fermer L'Application
 
 
-*** Variables ***
-${TEMP_PASSWORD}     TempPass789!
-${WRONG_PASSWORD}    WrongPass123!
-${WRONG_2FA_CODE}    000000
-${WEAK_PASSWORD}     1234
-
-
 *** Test Cases ***
 La Page De Login Est Accessible
     [Documentation]    Vérifie que l'application est accessible et que la page Login s'affiche
@@ -34,24 +27,30 @@ Login Et Logout 2FA
     [Documentation]    Connexion avec 2FA -> dashboard visible -> déconnexion -> retour login
     [Tags]    nightly    smoke    auth
 
-    auth_service.Login Avec Identifiants    ${USER_2FA_EMAIL}    ${USER_2FA_PASSWORD}
-    auth_service.Se connecter 2FA
+    ${email}    ${password}   ${code}=    auth_service.Obtenir Les Identifiants 2FA
+    auth_service.Login Avec Identifiants    ${email}    ${password}
+    auth_service.Se connecter 2FA   ${code} 
     auth_service.Logout
 
 Login Invalid Avec Affichage De L'Erreur
     [Documentation]     Vérifie qu’un mot de passe invalide déclenche un message d’erreur
     [Tags]    nightly        auth
     
-    auth_service.Login Avec Identifiants    ${USER_STD_EMAIL}    ${WRONG_PASSWORD}
+    ${wrong_pswd}    ${w2FA_code}    ${strong_pswd}    ${weak_pswd}=    
+    ...    auth_service.Obtenir Les Données Test
+    ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
+    auth_service.Login Avec Identifiants    ${email}    ${wrong_pswd}
     auth_service.Le Message D'Erreur S'Affiche    ${LOGIN_ERROR}
 
 Mauvais Code Pour 2FA Affiche Une Erreur
     [Documentation]     Vérifie qu’un mauvais code 2FA affiche un message d’erreur
     [Tags]    nightly    smoke    auth
     
-    auth_service.Login Avec Identifiants    ${USER_2FA_EMAIL}    ${USER_2FA_PASSWORD}
-    2FA_page.La Page "2FA" Est Visible
-    2FA_page.Saisir Le Code 2FA    ${WRONG_2FA_CODE}
+    ${email}    ${password}   ${code}=    auth_service.Obtenir Les Identifiants 2FA
+    auth_service.Login Avec Identifiants    ${email}    ${password}
+    ${wrong_pswd}    ${w2FA_code}    ${strong_pswd}    ${weak_pswd}=    
+    ...    auth_service.Obtenir Les Données Test
+    auth_service.Se connecter 2FA    ${w2FA_code}
     auth_service.Le Message D'Erreur S'Affiche    ${2FA_ERROR}
 
 Changer De Mot De Passe - Mot De Passe Trop Faible
@@ -59,9 +58,11 @@ Changer De Mot De Passe - Mot De Passe Trop Faible
     [Tags]    nightly   smoke    MDP    auth
     
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
+    ${wrong_pswd}    ${w2FA_code}    ${strong_pswd}    ${weak_pswd}=    
+    ...    auth_service.Obtenir Les Données Test
     auth_service.Login Avec Identifiants      ${email}    ${password}
     auth_service.Ouvrir La Modale de Changement De Mot De Passe
-    auth_service.Saisir Un Mot De Passe Faible    ${WEAK_PASSWORD}
+    auth_service.Saisir Un Mot De Passe Faible    ${password}    ${weak_pswd}
     auth_service.Logout
 
 Changer De Mot De Passe Et Recharger
@@ -70,14 +71,16 @@ Changer De Mot De Passe Et Recharger
     [Tags]    regression    MDP    auth
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
+    ${wrong_pswd}    ${w2FA_code}    ${strong_pswd}    ${weak_pswd}=    
+    ...    auth_service.Obtenir Les Données Test
     auth_service.Login Avec Identifiants      ${email}    ${password}
     auth_service.Ouvrir La Modale de Changement De Mot De Passe
-    auth_service.Changer De Mot De Passe    ${USER_STD_PASSWORD}    ${TEMP_PASSWORD}
+    auth_service.Changer De Mot De Passe    ${password}    ${strong_pswd}
     auth_service.Logout
-    auth_service.Login Avec Identifiants    ${USER_STD_EMAIL}    ${TEMP_PASSWORD}
+    auth_service.Login Avec Identifiants    ${email}    ${strong_pswd}
     auth_service.Ouvrir La Modale de Changement De Mot De Passe
-    auth_service.Changer De Mot De Passe    ${TEMP_PASSWORD}    ${USER_STD_PASSWORD}
+    auth_service.Changer De Mot De Passe    ${strong_pswd}    ${password}
     auth_service.Logout
-    auth_service.Login Avec Identifiants    ${USER_STD_EMAIL}    ${USER_STD_PASSWORD}
+    auth_service.Login Avec Identifiants    ${email}    ${password}
     main_page.La Page "Commune" Est Visible
     auth_service.Logout

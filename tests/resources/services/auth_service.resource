@@ -56,18 +56,27 @@ Obtenir Les Identifiants Standards
     ${email}    ${password}=    testdata.Get Standard Credentials
     RETURN    ${email}    ${password}
 
+Obtenir Les Identifiants 2FA
+    ${email}    ${password}    ${2fa_code}=    testdata.Get 2FA Credentials
+    RETURN    ${email}    ${password}    ${2fa_code}
+
+Obtenir Les Données Test
+    ${wrong_pswd}    ${w2FA_code}    ${strong_pswd}    ${weak_pswd}=    testdata.Get Test Data
+    RETURN    ${wrong_pswd}    ${w2FA_code}    ${strong_pswd}    ${weak_pswd}
+
 Logout
     [Documentation]    Déconnexion et retour à la page login
-    
+
+    main_page.La Page "Commune" Est Visible
     login_page.Cliquer sur "Déconnexion"
     login_page.La Page "Login" Est Visible
 
 Se connecter 2FA
     [Documentation]    Saisie du code pour le compte avec 2FA activé
+    [Arguments]    ${code}
 
     2FA_page.La Page "2FA" Est Visible
-    2FA_page.Saisir Le Code 2FA    ${USER_2FA_CODE}
-    main_page.La Page "Commune" Est Visible
+    2FA_page.Saisir Le Code 2FA    ${code}
 
 Le Message D'Erreur S'Affiche
     [Documentation]    Le message d'erreur d'affiche correctement
@@ -98,9 +107,9 @@ Changer De Mot De Passe
 
 Saisir Un Mot De Passe Faible
     [Documentation]    Saisir un mot de passe trop faible
-    [Arguments]    ${weak_password}
+    [Arguments]    ${current_password}    ${weak_password}
 
-    security_page.Saisir Mot De Passe Actuel     ${USER_STD_PASSWORD}
+    security_page.Saisir Mot De Passe Actuel     ${current_password}
     security_page.Saisir Nouveau Mot De Passe    ${weak_password}
     security_page.Confirmer Le Mot De Passe      ${weak_password}
     security_page.Le Message D'Erreur Est Présent
