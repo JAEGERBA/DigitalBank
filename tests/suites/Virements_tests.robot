@@ -20,7 +20,7 @@ La Page Virements Est Accessible
 
 Effectuer Un Virement Interne Valide
     [Documentation]    Vérifie qu’un virement interne entre Compte Courant et Livret A fonctionne
-    [Tags]    regression    smoke    virements
+    [Tags]    virements    nightly    E2E
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}
@@ -34,7 +34,7 @@ Effectuer Un Virement Interne Valide
 
 Virement Refuse Si Montant Invalide
     [Documentation]    Vérifie qu’un montant nul déclenche une erreur
-    [Tags]    regression    virements
+    [Tags]    virements    nightly    E2E
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}

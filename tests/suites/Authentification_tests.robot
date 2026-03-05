@@ -68,7 +68,7 @@ Changer De Mot De Passe - Mot De Passe Trop Faible
 Changer De Mot De Passe Et Recharger
     [Documentation]    Scénario non-régression clé : changer le mot de passe, se déconnecter, se reconnecter,
     ...                puis remettre le mot de passe initial pour rendre le test rejouable.
-    [Tags]    regression    MDP    auth
+    [Tags]    regression    MDP    auth    E2E    nightly
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     ${wrong_pswd}    ${w2FA_code}    ${strong_pswd}    ${weak_pswd}=    

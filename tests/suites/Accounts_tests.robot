@@ -11,7 +11,7 @@ Test Teardown    Fermer L'Application
 *** Test Cases ***
 La Page Accounts Est Accessible
     [Documentation]    Vérifie que la page Comptes/Accounts est accessible depuis l'application (accès menu + titre page)
-    [Tags]    regression    accounts
+    [Tags]    smoke    accounts    nightly
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}
@@ -21,7 +21,7 @@ La Page Accounts Est Accessible
 
 Les Comptes Attendues Sont Présents
     [Documentation]    Vérifie la présence des comptes attendus (Compte Courant + Livret A, ou équivalents EN)
-    [Tags]    regression    accounts
+    [Tags]    regression    accounts    nightly
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}
@@ -31,7 +31,7 @@ Les Comptes Attendues Sont Présents
 
 Consultation Des Soldes - Les Soldes Sont Présents
     [Documentation]    Vérifie qu'au moins un solde est affiché sur la page Comptes (format € attendu)
-    [Tags]    regression    accounts
+    [Tags]    regression    accounts    nightly
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}
@@ -41,7 +41,7 @@ Consultation Des Soldes - Les Soldes Sont Présents
 
 Consultation Des Transactions - Les Transactions Sont Présentes
     [Documentation]    Vérifie que la section Transactions est visible (anti-régression UI)
-    [Tags]    regression    accounts
+    [Tags]    regression    accounts    nightly
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}
@@ -51,7 +51,7 @@ Consultation Des Transactions - Les Transactions Sont Présentes
 
 Rafraîchir La Page Conserve Les Données
     [Documentation]    Recharge la page Comptes et vérifie que la page reste exploitable après refresh
-    [Tags]    regression    accounts
+    [Tags]    accounts    E2E
 
     ${email}    ${password}=    auth_service.Obtenir Les Identifiants Standards
     auth_service.Login Avec Identifiants      ${email}    ${password}

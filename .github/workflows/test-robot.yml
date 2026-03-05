@@ -21,7 +21,7 @@ jobs:
 
       - name: Run tests
         run: |
-          TEST_DIR=tests/e2e
+          TEST_DIR=tests/suite
           TAG=regression
           [ "${{ github.event_name }}" = "pull_request" ] && TAG=smoke
           [ "${{ github.event_name }}" = "schedule" ] && TAG=nightly

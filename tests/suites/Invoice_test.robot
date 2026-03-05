@@ -29,7 +29,7 @@ La page de Factures est accessible
     auth_service.Logout
 
 La liste des Factures en attente est visible    
-    [Tags]    smoke    regression    factures
+    [Tags]    smoke    regression    factures    nightly
     [Documentation]    Vérifie que la liste des factures en attente est visible (anti-régression UI).
     ...                On ne fait pas d'hypothèse forte sur le nombre, juste que la zone existe
 
@@ -42,7 +42,7 @@ La liste des Factures en attente est visible
     auth_service.Logout
 
 Ouverture modale paiement facture
-    [Tags]    smoke    regression    factures
+    [Tags]    smoke    regression    factures    nightly
     [Documentation]    Clique sur Payer (facture 1) et vérifie que la modale de confirmation apparaît.
 
     ${email}    ${password}    auth_service.Obtenir Les Identifiants Standards
@@ -56,7 +56,7 @@ Ouverture modale paiement facture
     auth_service.Logout
 
 Annuler paiement ferme la modale
-    [Tags]    regression    factures
+    [Tags]    regression    factures    nightly
     [Documentation]    Ouvre la modale de paiement puis clique Annuler et vérifie que la modale disparaît.
 
     ${email}    ${password}    auth_service.Obtenir Les Identifiants Standards
